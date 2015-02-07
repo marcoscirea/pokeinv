@@ -44,6 +44,8 @@ public class itemStats : MonoBehaviour {
 			armorBonus = tierBase[tier] + armorRoll;
 			hitsLeft = Random.Range(3,10);
 			//typelistArmor = Random.Range(1,5);
+			if (typelistArmor == 1)
+				armorType = "Hat";
 			if (typelistArmor == 2)
 				armorType = "Pants";
 			if (typelistArmor == 3)
