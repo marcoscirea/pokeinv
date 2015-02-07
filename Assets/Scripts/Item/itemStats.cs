@@ -4,14 +4,14 @@ using System.Collections;
 public class itemStats : MonoBehaviour {
 	public string objectName,objectFlair;
 	public int goldValue, Bonus1, Bonus2;
-	public sbyte type = 2;
+	// type 1 == armor, 2 == weapon, 3 == consumable, 4 == valuable
 	public int tier;
-
+	// armorType 1 == hat, 2 == pants, 3 == chest, 4 == shoes
 	public int armorBonus, attackBonus,hungerBonus,hitsLeft;
-	public string objectEffect1,objectEffect2, typeList;
-	public enum AttackType {Fire, Sharpness , Cold, Acid, Lightning};
-	public enum DefenceType {Fire, Sharpness , Cold, Acid, Lightning};
-
+	public short armorBonus, attackBonus,foodBonus,hitsLeft, hpBack,maxHpBonus;
+	public string objectEffect1,objectEffect2, typeList, typelistArmor;
+	//public enum AttackType {Fire, Sharpness , Cold, Acid, Lightning};
+	//public enum DefenceType {Fire, Sharpness , Cold, Acid, Lightning};
 	private int[] tierBase = {1,3,7,10};
 	
 
@@ -41,8 +41,14 @@ public class itemStats : MonoBehaviour {
 			int armorRoll = Random.Range(0,4);
 			armorBonus = tierBase[tier] + armorRoll;
 			hitsLeft = Random.Range(1,5);
-			objectEffect1 ="+"+Bonus1+" "+DefenceType.Fire+" resistance";
-			objectEffect2 ="+"+Bonus2+" "+DefenceType.Sharpness+" resistance";
+			if (typelistArmor = 2)
+				armorType = "Pants";
+			if (typelistArmor = 3)
+				armorType = "Chest";
+			if (typelistArmor = 4)
+				armorType = "Shoes";
+			//objectEffect1 ="+"+Bonus1+" "+DefenceType.Fire+" resistance";
+			//objectEffect2 ="+"+Bonus2+" "+DefenceType.Sharpness+" resistance";
 			
 			goldValue = (tierBase[tier] * 10* Random.Range(1,6));
 		}
@@ -51,14 +57,13 @@ public class itemStats : MonoBehaviour {
 			int attackRoll = Random.Range(0,4);
 			attackBonus = tierBase[tier] + attackRoll;
 			hitsLeft = Random.Range(1,5);
-			objectEffect1 ="+"+Bonus1+" "+AttackType.Sharpness+" damage";
-			objectEffect2 ="+"+Bonus2+" "+AttackType.Fire+" damage";
+			//objectEffect2 ="+"+Bonus2+" "+AttackType.Fire+" damage";
 
 			goldValue = (tierBase[tier] * 10* Random.Range(1,6));
 			
 		}
 		if (type == 3){
-			typeList = "Food";
+			typeList = "Consumable";
 			hungerBonus = Random.Range(10,50);
 
 			goldValue = (tierBase[tier] * Random.Range(1,6));
@@ -66,6 +71,7 @@ public class itemStats : MonoBehaviour {
 		}
 		if (type == 4){
 			typeList = "Valuable";
+			// Varibles to use, goldValue, objectFlair
 
 			goldValue = (tierBase[tier] * 50 * Random.Range(1,6));
 		}
