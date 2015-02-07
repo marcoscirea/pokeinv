@@ -69,7 +69,7 @@ public class itemStats : MonoBehaviour {
 		}
 		if (type == 3){
 			typeList = "Consumable";
-			hungerBonus = Random.Range(10,50);
+			hpBack = Random.Range(10,50);
 
 			goldValue = (tierBase[tier] * Random.Range(1,6));
 			
