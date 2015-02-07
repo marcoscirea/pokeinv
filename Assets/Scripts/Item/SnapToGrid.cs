@@ -9,7 +9,7 @@ public class SnapToGrid : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +18,7 @@ public class SnapToGrid : MonoBehaviour {
 
 	public void Snap(int x, int y){
 		ArrayList coord = new ArrayList();
-		int[] xy = {x,y};
+		int[] xy = {x - grid.offset,y};
 		//Debug.Log(xy[0]+" "+xy[1]);
 		item.UpdateOrigin(xy);
 		if (grid.IsAllowedPosition(item.coord)){
