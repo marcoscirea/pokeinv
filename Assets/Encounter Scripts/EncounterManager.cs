@@ -36,6 +36,10 @@ public class EncounterManager : MonoBehaviour {
 	public Button merchantExitButton;
 	public Text goldText;
 
+	//game over
+	public GameObject gameOverObject;
+	public Text gameOverText;
+
 	// Use this for initialization
 	void Start () {
 
@@ -46,6 +50,7 @@ public class EncounterManager : MonoBehaviour {
 		enemyAttackText.color = new Color(enemyAttackText.color.r,enemyAttackText.color.g,enemyAttackText.color.b,0);
 		playerAttackText.color = new Color(playerAttackText.color.r,playerAttackText.color.g,playerAttackText.color.b,0);
 		merchantExitButton.gameObject.SetActive(false);
+		gameOverObject.SetActive(false);
 
 	}
 	
@@ -195,6 +200,8 @@ public class EncounterManager : MonoBehaviour {
 			if(characterScript.health <= 0){
 				
 				//GAME OVER
+				gameOverObject.SetActive(true);
+				Time.timeScale = 0;
 			}
 		}
 	}
