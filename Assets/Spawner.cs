@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour {
 
-	public GameObject item_prefab;
+	public GameObject[] items;
 	public int itemsInQueue;
 	public GameObject current_item;
 	public float timeToDestroy=20;
@@ -49,6 +49,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	void Spawn(){
+		GameObject item_prefab = items[Random.Range(0,items.Length)];
 		current_item = (GameObject) Instantiate(item_prefab, transform.position, transform.rotation);
 		current_item.transform.position = current_item.transform.position - new Vector3(0,0,1) * transform.position.z;
 

@@ -82,7 +82,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ff10fa128e8404c9a4592a4402e4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item_prefab: {fileID: 152394, guid: ded21da8215c721409c4082971ca717e, type: 2}
+  items:
+  - {fileID: 165808, guid: 07d6a3d10e01c2f4e8497de526ee7ec0, type: 2}
+  - {fileID: 152126, guid: ba522fe9ce3daa743a78d4907b9a6b3d, type: 2}
+  - {fileID: 138746, guid: 7fad8535ab0cacd429ab4e47eb882bb3, type: 2}
+  - {fileID: 157098, guid: d6c6b5e978643704bb604da3f4ced572, type: 2}
+  - {fileID: 157530, guid: 3a2d94a98b0837f4085a7bb609d90f1a, type: 2}
+  - {fileID: 191936, guid: 8973a4daf861cf449bf64db08b729f44, type: 2}
+  - {fileID: 102824, guid: 0a5601914b9655042a9a5b50e6dc09b5, type: 2}
+  - {fileID: 109366, guid: f2fddfafecb90904a803c9ed0f7e63ea, type: 2}
+  - {fileID: 176978, guid: 51c08529056a23e4b81cf67b99687785, type: 2}
+  - {fileID: 115442, guid: 8c24013e5eab1204e84138df17dcd01a, type: 2}
+  - {fileID: 106220, guid: b89a7b0b9ccc4d74bb69dc7adb51930c, type: 2}
+  - {fileID: 185542, guid: 8cda79aaa6849874aa976f208daa4183, type: 2}
+  - {fileID: 132894, guid: 71b210dee8d838c49ba5ab5d1c0bbdc1, type: 2}
+  - {fileID: 179330, guid: 9479bc18a175e2244b77acc3aee23ee6, type: 2}
+  - {fileID: 174052, guid: ba52fe0df4118ce43bf71e9c246318cb, type: 2}
+  - {fileID: 147424, guid: 0cb1500f041fab247a5dea24e7f5f4d6, type: 2}
+  - {fileID: 127024, guid: 24bc9cf62f3b75d409e17377b006b812, type: 2}
   itemsInQueue: 0
   current_item: {fileID: 0}
   timeToDestroy: 20
