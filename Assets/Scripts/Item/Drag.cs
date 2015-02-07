@@ -9,6 +9,9 @@ public class Drag : MonoBehaviour
 	public Item item;
 	public Spawner spawner;
 	public GameObject trash;
+	public GameObject merchant;
+	public GameObject player;
+	public EncounterManager encounterManagScr;
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
@@ -19,15 +22,27 @@ public class Drag : MonoBehaviour
 	void Start(){
 		spawner = GameObject.FindGameObjectWithTag("Input").GetComponent<Spawner>();
 		trash = GameObject.FindGameObjectWithTag("Trash");
+		player = GameObject.FindGameObjectWithTag("Player");
+		encounterManagScr = GameObject.FindGameObjectWithTag("EncounterManager").GetComponent<EncounterManager>();
 	}
 
 	void Update(){
 		if (stickToMouse)
 			Stick();
+
+		//Setting merchant when merchant spawns.
+		if(encounterManagScr.inMerchantEncounter && merchant == null){
+			merchant = GameObject.FindGameObjectWithTag("Merchant");
+		}
+		if(!encounterManagScr.inMerchantEncounter && merchant != null){
+			merchant = null;
+		}
 	}
 	
 	void OnMouseDown ()
 	{
+		gameObject.collider.enabled = false;
+
 		startingPoint = gameObject.transform.position;
 
 		screenPoint = Camera.main.WorldToScreenPoint (gameObject.transform.position);
@@ -59,6 +74,7 @@ public class Drag : MonoBehaviour
 	public void Unstick(){
 		stickToMouse = false;
 		item.dragging = false;
+		gameObject.collider.enabled = true;
 	}
 
 	void OnMouseUp ()
@@ -66,6 +82,21 @@ public class Drag : MonoBehaviour
 		if (OverObject(trash)){
 			Destroy(gameObject);
 		}
+		if(merchant != null){
+			if(OverObject(merchant)){
+				//SELL
+				encounterManagScr.SellItem(GetComponent<itemStats>());
+				Destroy(gameObject);
+			}
+		}
+
+		if(OverObject(player)){
+			Debug.Log("from drag "+GetComponent<itemStats>().type+" "+GetComponent<itemStats>().typelistArmor);
+			player.GetComponent<equipManager>().Equip(gameObject);
+			//PLACE ITEM IN EQUIPMENT SLOT
+			Destroy(gameObject);
+		}
+
 
 		//snap to grid
 		int new_x = (int)transform.position.x;
@@ -108,12 +139,24 @@ public class Drag : MonoBehaviour
 	}
 
 	bool OverObject(GameObject obj){
-		if (transform.position.x > obj.transform.position.x - obj.transform.localScale.x/2 &&
-		    transform.position.x < obj.transform.position.x + obj.transform.localScale.x/2 &&
-		    transform.position.y > obj.transform.position.y - obj.transform.localScale.y/2 &&
-		    transform.position.y < obj.transform.position.y + obj.transform.localScale.y/2
-		    )
-			return true;
-		else return false;
+		//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hitInf;
+		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hitInf)){
+			if(hitInf.collider.gameObject.tag == obj.tag){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
+
+		//if (transform.position.x > obj.transform.position.x - obj.transform.localScale.x/2 &&
+		//    transform.position.x < obj.transform.position.x + obj.transform.localScale.x/2 &&
+		//    transform.position.y > obj.transform.position.y - obj.transform.localScale.y/2 &&
+		//    transform.position.y < obj.transform.position.y + obj.transform.localScale.y/2
+		//    )
+		//	return true;
+		//else return false;
 	}
 }

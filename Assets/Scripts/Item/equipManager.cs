@@ -2,67 +2,81 @@
 using System.Collections;
 
 public class equipManager : MonoBehaviour {
-	public sbyte hatHitLeft, pantHitLeft, weaponHitLeft, chestHitLeft, bootHitLeft;
+	public int hatHitLeft, pantHitLeft, weaponHitLeft, chestHitLeft, bootHitLeft;
 	public int totalAtt, totalDef;
-	public short _swordAtt, _chestDef, _bootDef, _hatDef, _pantDef;
+	public int _swordAtt, _chestDef, _bootDef, _hatDef, _pantDef;
 	bool chestEq,pantEq,hatEq,bootEq,weaponEq,potionOn;
 	bool hit = false;
+	public CharacterInWorld charScript;
+
 	// Use this for initialization
 	void Start () {
-	
+		charScript = GetComponent<CharacterInWorld>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-		hitChecker ();
+		Debug.Log(_swordAtt);
 
 	}
 
-	void Equip(){
-
+	public void Equip(GameObject targetItem){
 		//weapon
-		if (GameObject.Find (targetItem).GetComponent<itemStats> ().type == 2) {
-			_swordAtt = GameObject.Find(targetItem).GetComponent<itemStats> ().attackBonus;
+		if (targetItem.GetComponent<itemStats> ().type == 2) {
+			_swordAtt = targetItem.GetComponent<itemStats> ().attackBonus;
+			weaponEq = true;
+			weaponHitLeft = targetItem.GetComponent<itemStats> ().hitsLeft;
 		}
 		//armor
-		if (GameObject.Find (targetItem).GetComponent<itemStats> ().type == 1) {
-			if (GameObject.Find (targetItem).GetComponent<itemStats> ().typelistArmor == 1) {
-				_hatDef = GameObject.Find(targetItem).GetComponent<itemStats> ().armorBonus;
+		if (targetItem.GetComponent<itemStats> ().type == 1) {
+			if (targetItem.GetComponent<itemStats> ().typelistArmor == 1) {
+
+				_hatDef = targetItem.GetComponent<itemStats> ().armorBonus;
+				Debug.Log("HAT"+_hatDef);
+				hatEq = true;
+				hatHitLeft = targetItem.GetComponent<itemStats> ().hitsLeft;
 			}
-			if (GameObject.Find (targetItem).GetComponent<itemStats> ().typelistArmor == 2) {
-				_chestDef = GameObject.Find(targetItem).GetComponent<itemStats> ().armorBonus;
+			if (targetItem.GetComponent<itemStats> ().typelistArmor == 2) {
+				_chestDef = targetItem.GetComponent<itemStats> ().armorBonus;
+				Debug.Log("CHEST"+_chestDef);
+				chestEq = true;
+				chestHitLeft = targetItem.GetComponent<itemStats> ().hitsLeft;
 			}
-			if (GameObject.Find (targetItem).GetComponent<itemStats> ().typelistArmor == 3) {
-				_pantDef = GameObject.Find(targetItem).GetComponent<itemStats> ().armorBonus;
+			if (targetItem.GetComponent<itemStats> ().typelistArmor == 3) {
+				_pantDef = targetItem.GetComponent<itemStats> ().armorBonus;
+				Debug.Log("PANTS"+_pantDef);
+				pantEq = true;
+				pantHitLeft = targetItem.GetComponent<itemStats> ().hitsLeft;
 			}
-			if (GameObject.Find (targetItem).GetComponent<itemStats> ().typelistArmor == 4) {
-				_bootDef = GameObject.Find(targetItem).GetComponent<itemStats> ().armorBonus;
+			if (targetItem.GetComponent<itemStats> ().typelistArmor == 4) {
+				_bootDef = targetItem.GetComponent<itemStats> ().armorBonus;
+				Debug.Log("BOOT"+_bootDef);
+				bootEq = true;
+				bootHitLeft = targetItem.GetComponent<itemStats> ().hitsLeft;
 			}
 
 		}
-			
+		UpdateCharStats();
 	}
 
-	void hitChecker(){
+	public void hitChecker(){
 				
-		if (hit = true) {
 		
-			if (chestEq == true)
-				chestHitLeft -= 1;
-				
-			if (pantEq == true)
-				pantHitLeft -= 1;
+		if (chestEq == true)
+			chestHitLeft -= 1;
+			
+		if (pantEq == true)
+			pantHitLeft -= 1;
 
-			if (bootEq == true)
-				bootHitLeft -= 1;
+		if (bootEq == true)
+			bootHitLeft -= 1;
 
-			if (hatEq == true)
-				hatHitLeft -= 1;
+		if (hatEq == true)
+			hatHitLeft -= 1;
 
-			if (weaponEq == true)
-				weaponHitLeft -= 1;
-		}
+		if (weaponEq == true)
+			weaponHitLeft -= 1;
 
 		if (bootHitLeft == 0) {
 			bootEq = false;	
@@ -93,5 +107,11 @@ public class equipManager : MonoBehaviour {
 			//remove hat from UI
 			
 		}
+		UpdateCharStats();
+	}
+
+	void UpdateCharStats(){
+		charScript.attack = 2+_swordAtt;
+		charScript.armor = 0+_bootDef+_pantDef+_chestDef+_hatDef;
 	}
 }

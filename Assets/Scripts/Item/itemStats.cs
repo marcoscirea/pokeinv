@@ -6,9 +6,12 @@ public class itemStats : MonoBehaviour {
 	public int goldValue, Bonus1, Bonus2;
 	// type 1 == armor, 2 == weapon, 3 == consumable, 4 == valuable
 	public int tier;
+	public int type;
+	public string armorType;
 	// armorType 1 == hat, 2 == pants, 3 == chest, 4 == shoes
 	public int armorBonus, attackBonus,hungerBonus,hitsLeft, hpBack,maxHpBonus;
-	public string objectEffect1,objectEffect2, typeList, typelistArmor;
+	public string objectEffect1,objectEffect2, typeList;
+	public int typelistArmor;
 	//public enum AttackType {Fire, Sharpness , Cold, Acid, Lightning};
 	//public enum DefenceType {Fire, Sharpness , Cold, Acid, Lightning};
 	private int[] tierBase = {1,3,7,10};
@@ -18,8 +21,8 @@ public class itemStats : MonoBehaviour {
 	void Start () {
 
 		//choose type
-		type = (sbyte) (Random.Range(0,4)+1);
-		if (type == 5) type = 4;
+		type = (Random.Range(0,3)+1);
+		if (type == 4) type = 3;
 
 		float tierRoll = Random.value;
 		if (tierRoll < 0.5)
@@ -39,12 +42,13 @@ public class itemStats : MonoBehaviour {
 			typeList = "Armor";
 			int armorRoll = Random.Range(0,4);
 			armorBonus = tierBase[tier] + armorRoll;
-			hitsLeft = Random.Range(1,5);
-			if (typelistArmor = 2)
+			hitsLeft = Random.Range(3,10);
+			typelistArmor = Random.Range(1,5);
+			if (typelistArmor == 2)
 				armorType = "Pants";
-			if (typelistArmor = 3)
+			if (typelistArmor == 3)
 				armorType = "Chest";
-			if (typelistArmor = 4)
+			if (typelistArmor == 4)
 				armorType = "Shoes";
 			//objectEffect1 ="+"+Bonus1+" "+DefenceType.Fire+" resistance";
 			//objectEffect2 ="+"+Bonus2+" "+DefenceType.Sharpness+" resistance";
