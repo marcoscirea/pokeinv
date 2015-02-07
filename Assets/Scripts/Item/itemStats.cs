@@ -21,8 +21,8 @@ public class itemStats : MonoBehaviour {
 	void Start () {
 
 		//choose type
-		type = (Random.Range(0,4)+1);
-		if (type == 5) type = 4;
+		//type = (Random.Range(0,4)+1);
+		//if (type == 5) type = 4;
 
 		float tierRoll = Random.value;
 		if (tierRoll < 0.5)
@@ -43,7 +43,7 @@ public class itemStats : MonoBehaviour {
 			int armorRoll = Random.Range(0,4);
 			armorBonus = tierBase[tier] + armorRoll;
 			hitsLeft = Random.Range(3,10);
-			typelistArmor = Random.Range(1,5);
+			//typelistArmor = Random.Range(1,5);
 			if (typelistArmor == 2)
 				armorType = "Pants";
 			if (typelistArmor == 3)
