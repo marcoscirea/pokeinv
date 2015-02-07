@@ -8,6 +8,7 @@ public class Drag : MonoBehaviour
 	public SnapToGrid snap;
 	public Item item;
 	public Spawner spawner;
+	public GameObject trash;
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
@@ -17,6 +18,7 @@ public class Drag : MonoBehaviour
 
 	void Start(){
 		spawner = GameObject.FindGameObjectWithTag("Input").GetComponent<Spawner>();
+		trash = GameObject.FindGameObjectWithTag("Trash");
 	}
 
 	void Update(){
@@ -61,6 +63,10 @@ public class Drag : MonoBehaviour
 
 	void OnMouseUp ()
 	{
+		if (OverObject(trash)){
+			Destroy(gameObject);
+		}
+
 		//snap to grid
 		int new_x = (int)transform.position.x;
 		int new_y = (int)transform.position.y;
@@ -99,5 +105,15 @@ public class Drag : MonoBehaviour
 				new_y = new_y;
 		}
 		snap.Snap(new_x, new_y);
+	}
+
+	bool OverObject(GameObject obj){
+		if (transform.position.x > obj.transform.position.x - obj.transform.localScale.x/2 &&
+		    transform.position.x < obj.transform.position.x + obj.transform.localScale.x/2 &&
+		    transform.position.y > obj.transform.position.y - obj.transform.localScale.y/2 &&
+		    transform.position.y < obj.transform.position.y + obj.transform.localScale.y/2
+		    )
+			return true;
+		else return false;
 	}
 }
