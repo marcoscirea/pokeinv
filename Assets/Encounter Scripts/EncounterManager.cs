@@ -14,6 +14,7 @@ public class EncounterManager : MonoBehaviour {
 	Vector3 initialEnemyPosition;
 	Vector3 fightEnemyPosition;
 	bool inEncounter = false;
+	public Spawner itemSpawner;
 
 	bool fightIsBeginning = false;
 	bool shouldFight = false;
@@ -188,6 +189,7 @@ public class EncounterManager : MonoBehaviour {
 				EndFight();
 
 				//DROP LOOT
+				itemSpawner.NewItems(Random.Range(1,4));
 			}
 			
 			if(characterScript.health <= 0){

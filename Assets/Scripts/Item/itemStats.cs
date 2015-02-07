@@ -14,27 +14,27 @@ public class itemStats : MonoBehaviour {
 	public int typelistArmor;
 	//public enum AttackType {Fire, Sharpness , Cold, Acid, Lightning};
 	//public enum DefenceType {Fire, Sharpness , Cold, Acid, Lightning};
-	private int[] tierBase = {1,3,7,10};
+	private readonly int[] tierBase = {1,3,7,10};
 	
 
 	// Use this for initialization
 	void Start () {
 
 		//choose type
-		type = (Random.Range(0,3)+1);
-		if (type == 4) type = 3;
+		type = (Random.Range(0,4)+1);
+		if (type == 5) type = 4;
 
 		float tierRoll = Random.value;
 		if (tierRoll < 0.5)
-			tier = 1;
+			tier = 0;
 		else {
 			if (tierRoll < 0.8)
-				tier = 2;
+				tier = 1;
 			else{
 				if (tierRoll<0.95)
-					tier = 3;
+					tier = 2;
 				else
-					tier = 4;
+					tier = 3;
 			}
 		}
 
