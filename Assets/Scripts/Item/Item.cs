@@ -32,10 +32,13 @@ public class Item : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (dragging){
-			if (Input.GetKeyDown(KeyCode.Q))
+			if (Input.GetKeyDown(KeyCode.Q)){
 				RotateMatrix(true);
-			if (Input.GetKeyDown(KeyCode.W))
+				transform.Rotate(new Vector3(0,0,90));
+			}
+			if (Input.GetKeyDown(KeyCode.W)){
 				RotateMatrix(false);
+				transform.Rotate(new Vector3(0,0,-90));			}
 		}
 	}
 

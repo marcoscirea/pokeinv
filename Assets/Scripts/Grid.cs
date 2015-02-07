@@ -18,8 +18,11 @@ public class Grid : MonoBehaviour {
 
 	public bool IsAllowedPosition(ArrayList coord){
 		foreach (int[] xy in coord){
+			//Debug.Log(xy[0]+" "+xy[1]);
 			int x = xy[0] + size/2;
 			int y = xy[1] + size/2;
+			if (x < 0 || y < 0 || x >=size || y >=size)
+				return false;
 			if (grid[x,y] == true)
 				return false;
 		}
@@ -31,7 +34,7 @@ public class Grid : MonoBehaviour {
 			Debug.Log("Bad item addition to grid");
 		else {
 			foreach (int[] xy in coord){
-				Debug.Log(xy[0]+" "+xy[1]);
+				//Debug.Log(xy[0]+" "+xy[1]);
 				int x = xy[0] + size/2;
 				int y = xy[1] + size/2;
 				grid[x,y] = true;
