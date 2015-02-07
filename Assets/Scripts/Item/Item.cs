@@ -33,6 +33,8 @@ public class Item : MonoBehaviour {
 		origin = new int[2];
 		grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
 		snap = GetComponent<SnapToGrid>();
+
+		UpdateGuidelines();
 	}
 	
 	// Update is called once per frame
@@ -53,10 +55,33 @@ public class Item : MonoBehaviour {
 		}
 	}
 
-	public void UpdateOrigin(int[] newOrigin){
+	void UpdateGuidelines(){
+		foreach(Transform t in this.GetComponentsInChildren<Transform>()){
+			t.gameObject.SetActive(true);
+			if (t.name == "DL" && !shape[0].boolArray[0])
+				t.gameObject.SetActive(false);
+			if (t.name == "D" && !shape[0].boolArray[1])
+				t.gameObject.SetActive(false);
+			if (t.name == "DR" && !shape[0].boolArray[2])
+				t.gameObject.SetActive(false);
+			if (t.name == "L" && !shape[1].boolArray[1])
+				t.gameObject.SetActive(false);
+			if (t.name == "R" && !shape[1].boolArray[2])
+				t.gameObject.SetActive(false);
+			if (t.name == "UL" && !shape[2].boolArray[0])
+				t.gameObject.SetActive(false);
+			if (t.name == "U" && !shape[2].boolArray[1])
+				t.gameObject.SetActive(false);
+			if (t.name == "UR" && !shape[2].boolArray[2])
+				t.gameObject.SetActive(false);
+		}
+    }
+    
+    public void UpdateOrigin(int[] newOrigin){
 		origin[0] = newOrigin[0] - (size-1)/2;
 		origin[1] = newOrigin[1] - (size-1)/2;
 		UpdateCoord();
+		//UpdateGuidelines();
 	}
 
 	void UpdateCoord(){
@@ -107,6 +132,7 @@ public class Item : MonoBehaviour {
 				origin[0] = j - (size-1)/2;
 				origin[1] = i - (size-1)/2;
 				UpdateCoord();
+				//UpdateGuidelines();
 				if (grid.IsAllowedPosition(coord)){
 					Debug.Log("AutoPlacement: slot found "+origin[0]+" "+origin[1]);
 					snap.Snap(origin[0], origin[1]);
