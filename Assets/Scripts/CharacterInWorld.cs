@@ -15,7 +15,7 @@ public class CharacterInWorld : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		health = 100;
+	//	health = 100;
 		maxHealth = health;
 		attack = 2;
 		armor = 0;

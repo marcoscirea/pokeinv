@@ -5,8 +5,6 @@ public class Chest : Enemy {
 
 	// Use this for initialization
 	public void Start () {
-		health = 10;
-		attack = 0;
 	
 	}
 	
