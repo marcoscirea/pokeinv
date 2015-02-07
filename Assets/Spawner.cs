@@ -49,7 +49,9 @@ public class Spawner : MonoBehaviour {
 	}
 
 	void Spawn(){
-		GameObject item_prefab = items[Random.Range(0,items.Length)];
+		int index = Random.Range(0,items.Length);
+		Debug.Log(items.Length);
+		GameObject item_prefab = items[index];
 		current_item = (GameObject) Instantiate(item_prefab, transform.position, transform.rotation);
 		current_item.transform.position = current_item.transform.position - new Vector3(0,0,1) * transform.position.z;
 

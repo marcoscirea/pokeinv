@@ -64,7 +64,7 @@ public class Item : MonoBehaviour {
 				t.gameObject.SetActive(false);
 			if (t.name == "DR" && !shape[0].boolArray[2])
 				t.gameObject.SetActive(false);
-			if (t.name == "L" && !shape[1].boolArray[1])
+			if (t.name == "L" && !shape[1].boolArray[0])
 				t.gameObject.SetActive(false);
 			if (t.name == "R" && !shape[1].boolArray[2])
 				t.gameObject.SetActive(false);
