@@ -12,6 +12,7 @@ public class equipManager : MonoBehaviour {
 	public int hpToGiveBack;
 	public CharacterInWorld charScript;
 	public EquipVisualization equipUI;
+	public AudioSource equipSound;
 
 	public GameObject hatIcon,chestIcon,pantsIcon,bootIcon,WeaponIcon;
 
@@ -29,6 +30,7 @@ public class equipManager : MonoBehaviour {
 	}
 
 	public void Equip(GameObject targetItem){
+		equipSound.Play();
 		equipUI.Set(targetItem.name);
 		//weapon
 		if (targetItem.GetComponent<itemStats> ().type == 2) {

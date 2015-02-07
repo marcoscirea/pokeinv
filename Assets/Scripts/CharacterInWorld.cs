@@ -9,7 +9,7 @@ public class CharacterInWorld : MonoBehaviour {
 	public equipManager eqManag;
 	//public int fireAtt, coldAtt, sharpnessAtt,AcidAtt,lightningAtt;
 	//public int fireDef, coldDef, sharpnessDef,AcidDef,lightningDef;
-
+	public AudioSource[] hitSounds;
 
 	Animator playerAnimator;
 
@@ -42,6 +42,12 @@ public class CharacterInWorld : MonoBehaviour {
 
 	public void NotInMerchantShouldStart(){
 		playerAnimator.SetBool("inMerchant",false);
+	}
+
+	public void PlayHitSound(){
+		Debug.Log("play sound");
+		int soundChooser = Random.Range(0,3);
+		hitSounds[soundChooser].Play();
 	}
 
 
