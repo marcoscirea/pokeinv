@@ -7,12 +7,17 @@ public class Drag : MonoBehaviour
 {
 	public SnapToGrid snap;
 	public Item item;
+	public Spawner spawner;
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
 	private Vector3 startingPoint;
 	//public bool collided=false;
 	private bool stickToMouse = false;
+
+	void Start(){
+		spawner = GameObject.FindGameObjectWithTag("Input").GetComponent<Spawner>();
+	}
 
 	void Update(){
 		if (stickToMouse)
@@ -30,6 +35,10 @@ public class Drag : MonoBehaviour
 		//free space if moving item in grid
 		if (!stickToMouse)
 			item.RemoveFromGrid();
+
+		//pop item from input queue if taken from input pile
+		if (spawner.current_item == gameObject)
+			spawner.PickedItem();
 	}
 	
 	void OnMouseDrag ()

@@ -9,7 +9,7 @@ public class SnapToGrid : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
 	}
 	
 	// Update is called once per frame

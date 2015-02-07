@@ -27,6 +27,7 @@ public class Item : MonoBehaviour {
 	void Start () {
 		//UpdateCoord();
 		origin = new int[2];
+		grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
 	}
 	
 	// Update is called once per frame
@@ -34,11 +35,11 @@ public class Item : MonoBehaviour {
 		if (dragging){
 			if (Input.GetKeyDown(KeyCode.Q)){
 				RotateMatrix(true);
-				transform.Rotate(new Vector3(0,0,90));
+				transform.Rotate(new Vector3(0,0,-90));
 			}
 			if (Input.GetKeyDown(KeyCode.W)){
 				RotateMatrix(false);
-				transform.Rotate(new Vector3(0,0,-90));			}
+				transform.Rotate(new Vector3(0,0,90));			}
 		}
 	}
 
