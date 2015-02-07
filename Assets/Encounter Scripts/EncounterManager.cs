@@ -24,6 +24,8 @@ public class EncounterManager : MonoBehaviour {
 
 	public Text playerAttackText;
 	public Text enemyAttackText;
+	Vector3 pTextPos;
+	Vector3 eTextPos;
 	public float timeToFadeText = 0.4f;
 	float textFadeTime;
 	
@@ -35,6 +37,8 @@ public class EncounterManager : MonoBehaviour {
 	Merchant currMerchantScript;
 	public Button merchantExitButton;
 	public Text goldText;
+	Vector3 gTextPos;
+	public backgroundRotate backgroundScr;
 
 	//game over
 	public GameObject gameOverObject;
@@ -51,6 +55,9 @@ public class EncounterManager : MonoBehaviour {
 		playerAttackText.color = new Color(playerAttackText.color.r,playerAttackText.color.g,playerAttackText.color.b,0);
 		merchantExitButton.gameObject.SetActive(false);
 		gameOverObject.SetActive(false);
+		pTextPos = playerAttackText.transform.position;
+		eTextPos = enemyAttackText.transform.position;
+		gTextPos = goldText.transform.position;
 
 	}
 	
@@ -97,6 +104,8 @@ public class EncounterManager : MonoBehaviour {
 			currMerchantScript = currMerchant.GetComponent<Merchant>();
 			currMerchantScript.PlayMerchantEnterAnimation();
 			merchantExitButton.gameObject.SetActive(true);
+			characterScript.InMerchantShouldStop();
+			backgroundScr.StopTheWorld();
 		}
 		else{
 			// FIGHT
@@ -171,13 +180,16 @@ public class EncounterManager : MonoBehaviour {
 			characterScript.PlayAttackAnimation();
 			currEnemyScript.PlayAttackAnimation();
 
+			//subtract health values
 			characterScript.health -= currEnemyScript.attack;
 			currEnemyScript.health -= characterScript.attack;
 
 			enemyAttackText.color = new Color(enemyAttackText.color.r,enemyAttackText.color.g,enemyAttackText.color.b,1);
 			playerAttackText.color = new Color(playerAttackText.color.r,playerAttackText.color.g,playerAttackText.color.b,1);
 
-			//subtract health values
+			enemyAttackText.transform.position = eTextPos;
+			playerAttackText.transform.position = pTextPos;
+
 			playerAttackText.text = ""+currEnemyScript.attack;
 			StartCoroutine(BattleTextFade(playerAttackText,timeToFadeText));
 
@@ -217,6 +229,7 @@ public class EncounterManager : MonoBehaviour {
 
 	IEnumerator BattleTextFade(Text text,float time){
 		Vector3 textPos = text.gameObject.transform.position;
+		Debug.Log("start "+textPos);
 		Vector3 initPos = textPos;
 		float initTime = time;
 		textFadeTime = time;
@@ -234,6 +247,7 @@ public class EncounterManager : MonoBehaviour {
 		tempCol.a = 0;
 		text.color = tempCol;
 		textPos = initPos;
+		Debug.Log("end "+textPos);
 		yield return 0;
 	}
 
@@ -246,6 +260,7 @@ public class EncounterManager : MonoBehaviour {
 
 	public void SellItem(itemStats i){
 		goldText.text = " +"+i.goldValue;
+		goldText.transform.position = gTextPos;
 		StartCoroutine(BattleTextFade(goldText,1f));
 		characterScript.gold += i.goldValue;
 	}
@@ -258,6 +273,8 @@ public class EncounterManager : MonoBehaviour {
 		merchantExitButton.gameObject.SetActive(false);
 		CalculateTimeToNextEncounter();
 		inEncounter = false;
+		characterScript.NotInMerchantShouldStart();
+		backgroundScr.StartTheWorld();
 
 	}
 

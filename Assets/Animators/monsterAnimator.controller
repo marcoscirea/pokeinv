@@ -5,10 +5,16 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlayerAnimator
+  m_Name: monsterAnimator
   serializedVersion: 2
   m_AnimatorParameters:
-  - m_Name: playerAttack
+  - m_Name: enemyAttack
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: enemyEnterCombat
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -26,6 +32,46 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1101 &110107926
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110206626}
+  m_DstState: {fileID: 110264040}
+  m_TransitionDuration: .25
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: enemyEnterCombat
+    m_EventTreshold: 0
+    m_ExitTime: .75
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
+--- !u!1101 &110119404
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110262198}
+  m_DstState: {fileID: 110264040}
+  m_TransitionDuration: .5
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: 
+    m_EventTreshold: 0
+    m_ExitTime: .300000012
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110125334
 Transition:
   serializedVersion: 2
@@ -66,6 +112,26 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1101 &110167216
+Transition:
+  serializedVersion: 2
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110264040}
+  m_DstState: {fileID: 110262198}
+  m_TransitionDuration: .25
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: enemyAttack
+    m_EventTreshold: 0
+    m_ExitTime: .75
+  m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+  m_CanTransitionToSelf: 0
 --- !u!1101 &110199776
 Transition:
   serializedVersion: 2
@@ -86,6 +152,21 @@ Transition:
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
+--- !u!1102 &110206626
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: enemyEnter
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 5e7991792d0ae444fb21e9417fa42b4c, type: 2}
+  m_ParentStateMachine: {fileID: 110735614}
+  m_Position: {x: 84, y: -72, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110227122
 State:
   m_ObjectHideFlags: 3
@@ -116,6 +197,36 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110262198
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: enemyAttack
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 5a3ecb5013ffb4162bd0e32cdbe98287, type: 2}
+  m_ParentStateMachine: {fileID: 110735614}
+  m_Position: {x: 83, y: 113, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110264040
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: enemyCombatStance
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: ea45d3be7577442579af11c5a3760abb, type: 2}
+  m_ParentStateMachine: {fileID: 110735614}
+  m_Position: {x: 84, y: 12, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1107 &110735614
 StateMachine:
   serializedVersion: 2
@@ -123,21 +234,26 @@ StateMachine:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 110227122}
+  m_DefaultState: {fileID: 110206626}
   m_States:
-  - {fileID: 110235614}
-  - {fileID: 110227122}
+  - {fileID: 110262198}
+  - {fileID: 110206626}
+  - {fileID: 110264040}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110227122}
+      first: {fileID: 110206626}
       second:
-      - {fileID: 110125334}
+      - {fileID: 110107926}
     data:
-      first: {fileID: 110235614}
+      first: {fileID: 110262198}
       second:
-      - {fileID: 110154744}
+      - {fileID: 110119404}
+    data:
+      first: {fileID: 110264040}
+      second:
+      - {fileID: 110167216}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 348, y: -72, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

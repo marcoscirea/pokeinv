@@ -17,4 +17,13 @@ public class backgroundRotate : MonoBehaviour {
 		transform.Rotate(0,0,rotateSpeed*Time.deltaTime);
 	
 	}
+
+
+	public void StopTheWorld(){
+		rotateSpeed = 0f;
+	}
+
+	public void StartTheWorld(){
+		rotateSpeed = 1f;
+	}
 }
