@@ -27,7 +27,9 @@ public class SnapToGrid : MonoBehaviour {
 			drag.Unstick();
 			transform.position = new Vector3 (x, y);
 		}
-		else
+		else {
 			Debug.Log("Slot filled");
+			gameObject.collider.enabled = true;
+		}
 	}
 }

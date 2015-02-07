@@ -17,7 +17,7 @@ public class equipManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		Debug.Log(_swordAtt);
+		//Debug.Log(_swordAtt);
 
 	}
 
