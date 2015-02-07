@@ -6,9 +6,11 @@ public class Grid : MonoBehaviour {
 	//public ArrayList items = new ArrayList();
 	public int size = 5;
 	bool[,] grid;
+	public int offset;
 	// Use this for initialization
 	void Start () {
 		grid = new bool[size,size];
+		offset = (int) transform.position.x;
 	}
 	
 	// Update is called once per frame
@@ -18,9 +20,10 @@ public class Grid : MonoBehaviour {
 
 	public bool IsAllowedPosition(ArrayList coord){
 		foreach (int[] xy in coord){
-			//Debug.Log(xy[0]+" "+xy[1]);
+			Debug.Log(xy[0]+" "+xy[1]);
 			int x = xy[0] + size/2;
 			int y = xy[1] + size/2;
+			Debug.Log(x+" "+y);
 			if (x < 0 || y < 0 || x >=size || y >=size)
 				return false;
 			if (grid[x,y] == true)

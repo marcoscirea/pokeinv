@@ -15,6 +15,7 @@ public class Item : MonoBehaviour {
 	public ArrayList coord;
 	public int size = 3;
 	public bool dragging = false;
+	public SnapToGrid snap;
 //	public bool[,] shape = 
 //	{
 //		{false, true, false},
@@ -23,11 +24,15 @@ public class Item : MonoBehaviour {
 //	};
 	public MultiDimensionalBool[] shape;
 
+	//Debug
+	public bool auto = false;
+
 	// Use this for initialization
 	void Start () {
 		//UpdateCoord();
 		origin = new int[2];
 		grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
+		snap = GetComponent<SnapToGrid>();
 	}
 	
 	// Update is called once per frame
@@ -35,11 +40,16 @@ public class Item : MonoBehaviour {
 		if (dragging){
 			if (Input.GetKeyDown(KeyCode.Q)){
 				RotateMatrix(true);
-				transform.Rotate(new Vector3(0,0,-90));
+				transform.Rotate(new Vector3(0,0,90));
 			}
 			if (Input.GetKeyDown(KeyCode.W)){
 				RotateMatrix(false);
-				transform.Rotate(new Vector3(0,0,90));			}
+				transform.Rotate(new Vector3(0,0,-90));			
+			}
+		}
+		//only TESTING
+		if (Input.GetKeyDown(KeyCode.A) && auto){
+			AutoPlace();		
 		}
 	}
 
@@ -88,5 +98,22 @@ public class Item : MonoBehaviour {
 				shape[i].boolArray[j]=ret[i,j];
 			}
 		}
+	}
+
+	void AutoPlace(){
+		grid.Remove(coord);
+		for (int i = -grid.size/2; i < grid.size/2; i++){
+			for (int j = -grid.size/2; j< grid.size/2; j++){
+				origin[0] = j - (size-1)/2;
+				origin[1] = i - (size-1)/2;
+				UpdateCoord();
+				if (grid.IsAllowedPosition(coord)){
+					Debug.Log("AutoPlacement: slot found "+origin[0]+" "+origin[1]);
+					snap.Snap(origin[0], origin[1]);
+					return;
+				}
+			}
+		}
+		Debug.Log("AutoPlacement: No slot found");
 	}
 }
