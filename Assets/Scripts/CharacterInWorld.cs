@@ -34,4 +34,13 @@ public class CharacterInWorld : MonoBehaviour {
 	}
 
 
+	public void InMerchantShouldStop(){
+		playerAnimator.SetBool("inMerchant",true);
+	}
+
+	public void NotInMerchantShouldStart(){
+		playerAnimator.SetBool("inMerchant",false);
+	}
+
+
 }
