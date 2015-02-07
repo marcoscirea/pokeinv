@@ -346,6 +346,8 @@ GameObject:
   - 114: {fileID: 1330205738}
   - 114: {fileID: 1330205737}
   - 114: {fileID: 1330205736}
+  - 114: {fileID: 1330205744}
+  - 114: {fileID: 1330205743}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -456,6 +458,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &1330205743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11401552, guid: ded21da8215c721409c4082971ca717e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1616991891}
+  m_GameObject: {fileID: 1330205735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7426ded7462f54f43a17872f183cd92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetItem: 
+--- !u!114 &1330205744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11408720, guid: ded21da8215c721409c4082971ca717e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1616991891}
+  m_GameObject: {fileID: 1330205735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1b2d51359a53c45bdd37a9e7ab0d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectFlair: 
+  objectEffect1: 
+  objectEffect2: 
+  typeList: 
 --- !u!1001 &1616991891
 Prefab:
   m_ObjectHideFlags: 0
@@ -493,7 +525,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 452394, guid: ded21da8215c721409c4082971ca717e, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11452396, guid: ded21da8215c721409c4082971ca717e, type: 2}
       propertyPath: grid

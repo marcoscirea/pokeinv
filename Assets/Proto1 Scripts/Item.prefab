@@ -14,6 +14,8 @@ GameObject:
   - 114: {fileID: 11452394}
   - 114: {fileID: 11452396}
   - 114: {fileID: 11452398}
+  - 114: {fileID: 11408720}
+  - 114: {fileID: 11401552}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -72,6 +74,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11401552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7426ded7462f54f43a17872f183cd92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetItem: 
+--- !u!114 &11408720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1b2d51359a53c45bdd37a9e7ab0d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectFlair: 
+  objectEffect1: 
+  objectEffect2: 
+  typeList: 
 --- !u!114 &11452394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +143,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   origin: 
   size: 3
+  dragging: 0
   shape:
   - boolArray: 000101
   - boolArray: 000100
