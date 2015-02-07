@@ -54,7 +54,7 @@ public class mouseOver : MonoBehaviour {
 		}
 		//valuable items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 4 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        "\n Type: "+gameObject.GetComponent<itemStats>().typeList+
 			        "\n \n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 					"\n \n \n \n" 
