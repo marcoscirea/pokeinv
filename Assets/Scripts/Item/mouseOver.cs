@@ -4,8 +4,7 @@ using System.Collections;
 
 
 public class mouseOver : MonoBehaviour {
-
-	public string targetItem;
+	
 	private string objectEffect1;
 	private string objectEffect2;
 	private string objectFlair;
@@ -24,17 +23,17 @@ public class mouseOver : MonoBehaviour {
 	}
 	public void DisplayName(){
 		if (_displayObjectName == true) {
-			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+GameObject.Find(targetItem).GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        																				  "\n Type: " 
-			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().typeList+
+			        +gameObject.GetComponent<itemStats>().typeList+
 			        																				  "\n Gold Value: " 
-			       																					  +GameObject.Find(targetItem).GetComponent<itemStats>().goldValue+
+			        +gameObject.GetComponent<itemStats>().goldValue+
 			        																				  "\n \n"
-			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().objectEffect1+ 
+			        +gameObject.GetComponent<itemStats>().objectEffect1+ 
 			        																				  "\n" 
-			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().objectEffect2+ 
+			        +gameObject.GetComponent<itemStats>().objectEffect2+ 
 			        																				  "\n \n" 
-			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().objectFlair);
+			        +gameObject.GetComponent<itemStats>().objectFlair);
 		}
 	}
 }
