@@ -487,6 +487,7 @@ MonoBehaviour:
   _bootDef: 0
   _hatDef: 0
   _pantDef: 0
+  hpToGiveBack: 0
   charScript: {fileID: 0}
   equipUI: {fileID: 0}
   hatIcon: {fileID: 0}
@@ -2727,5 +2728,5 @@ MonoBehaviour:
   rock: {fileID: 21300000, guid: 173046a585ed1df4ba41c22d855e0df6, type: 3}
   stick: {fileID: 21300000, guid: eae26acf7fc5ed04ba34a020adc44248, type: 3}
   sword: {fileID: 21300000, guid: 14f2955413fa62342ae2bdfc508a46c5, type: 3}
-  wood: {fileID: 21300000, guid: eae26acf7fc5ed04ba34a020adc44248, type: 3}
+  wood: {fileID: 21300000, guid: 442dc5720a2be3b408de578259158e5f, type: 3}
   Default: {fileID: 0}
