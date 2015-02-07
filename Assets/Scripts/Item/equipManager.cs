@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class equipManager : MonoBehaviour {
 	public int hatHitLeft, pantHitLeft, weaponHitLeft, chestHitLeft, bootHitLeft;
@@ -8,6 +9,8 @@ public class equipManager : MonoBehaviour {
 	bool chestEq,pantEq,hatEq,bootEq,weaponEq,potionOn;
 	bool hit = false;
 	public CharacterInWorld charScript;
+
+	public GameObject hatIcon,chestIcon,pantsIcon,bootIcon,WeaponIcon;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +34,6 @@ public class equipManager : MonoBehaviour {
 		//armor
 		if (targetItem.GetComponent<itemStats> ().type == 1) {
 			if (targetItem.GetComponent<itemStats> ().typelistArmor == 1) {
-
 				_hatDef = targetItem.GetComponent<itemStats> ().armorBonus;
 				Debug.Log("HAT"+_hatDef);
 				hatEq = true;

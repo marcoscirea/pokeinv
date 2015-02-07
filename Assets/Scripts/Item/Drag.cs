@@ -91,10 +91,11 @@ public class Drag : MonoBehaviour
 		}
 
 		if(OverObject(player)){
-			Debug.Log("from drag "+GetComponent<itemStats>().type+" "+GetComponent<itemStats>().typelistArmor);
+			Unstick();
 			player.GetComponent<equipManager>().Equip(gameObject);
 			//PLACE ITEM IN EQUIPMENT SLOT
 			Destroy(gameObject);
+
 		}
 
 
