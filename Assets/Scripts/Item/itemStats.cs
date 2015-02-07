@@ -7,8 +7,7 @@ public class itemStats : MonoBehaviour {
 	// type 1 == armor, 2 == weapon, 3 == consumable, 4 == valuable
 	public int tier;
 	// armorType 1 == hat, 2 == pants, 3 == chest, 4 == shoes
-	public int armorBonus, attackBonus,hungerBonus,hitsLeft;
-	public short armorBonus, attackBonus,foodBonus,hitsLeft, hpBack,maxHpBonus;
+	public int armorBonus, attackBonus,hungerBonus,hitsLeft, hpBack,maxHpBonus;
 	public string objectEffect1,objectEffect2, typeList, typelistArmor;
 	//public enum AttackType {Fire, Sharpness , Cold, Acid, Lightning};
 	//public enum DefenceType {Fire, Sharpness , Cold, Acid, Lightning};
