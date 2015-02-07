@@ -14,6 +14,7 @@ public class Item : MonoBehaviour {
 	public int[] origin;
 	public ArrayList coord;
 	public int size = 3;
+	public bool dragging = false;
 //	public bool[,] shape = 
 //	{
 //		{false, true, false},
@@ -30,7 +31,12 @@ public class Item : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (dragging){
+			if (Input.GetKeyDown(KeyCode.Q))
+				RotateMatrix(true);
+			if (Input.GetKeyDown(KeyCode.W))
+				RotateMatrix(false);
+		}
 	}
 
 	public void UpdateOrigin(int[] newOrigin){
@@ -58,5 +64,25 @@ public class Item : MonoBehaviour {
 	public void RemoveFromGrid(){
 		if (coord!= null)
 			grid.Remove(coord);
+	}
+
+	void RotateMatrix(bool clockwise) {
+		int n = size;
+		bool[,] ret = new bool[n, n];
+		
+		for (int i = 0; i < n; ++i) {
+			for (int j = 0; j < n; ++j) {
+				if (clockwise)
+					ret[i,j] = shape[n - j - 1].boolArray[i];
+				else 
+					ret[j,i] = shape[i].boolArray[n - j - 1];
+			}
+		}
+		
+		for (int i = 0; i < size; i++){
+			for (int j = 0; j< size; j++){
+				shape[i].boolArray[j]=ret[i,j];
+			}
+		}
 	}
 }

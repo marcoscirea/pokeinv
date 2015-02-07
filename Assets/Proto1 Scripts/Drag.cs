@@ -35,6 +35,7 @@ public class Drag : MonoBehaviour
 	void OnMouseDrag ()
 	{
 		stickToMouse = true;
+		item.dragging = true;
 	}
 
 	void Stick(){
@@ -46,6 +47,7 @@ public class Drag : MonoBehaviour
 
 	public void Unstick(){
 		stickToMouse = false;
+		item.dragging = false;
 	}
 
 	void OnMouseUp ()
