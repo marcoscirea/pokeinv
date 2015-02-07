@@ -25,7 +25,7 @@ public class mouseOver : MonoBehaviour {
 		//armor items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 1 ) {
 			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
-			        																				  "\n Type: "+gameObject.GetComponent<itemStats>().typeList+" "+gameObject.GetComponent<itemStats>().typeList+
+			        																				  "\n Type: "+gameObject.GetComponent<itemStats>().typeList+" "+gameObject.GetComponent<itemStats>().armorType+
 			        																				  "\n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 			        																				  "\nArmor Bonus: "+gameObject.GetComponent<itemStats>().armorBonus+ 
 			        																				  "\n \n Hits Left: " +gameObject.GetComponent<itemStats>().hitsLeft+ 
