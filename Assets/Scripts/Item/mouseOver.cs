@@ -23,18 +23,43 @@ public class mouseOver : MonoBehaviour {
 		_displayObjectName = false;
 	}
 	public void DisplayName(){
-		if (_displayObjectName == true) {
+		//armor items
+		if (_displayObjectName == true && +GameObject.Find(targetItem).GetComponent<itemStats>().type == 1 ) {
 			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+GameObject.Find(targetItem).GetComponent<itemStats>().objectName+  
-			        																				  "\n Type: " 
-			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().typeList+
-			        																				  "\n Gold Value: " 
-			       																					  +GameObject.Find(targetItem).GetComponent<itemStats>().goldValue+
-			        																				  "\n \n"
-			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().objectEffect1+ 
-			        																				  "\n" 
-			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().objectEffect2+ 
+			        																				  "\n Type: "+GameObject.Find(targetItem).GetComponent<itemStats>().typeList+
+			        																				  "\n Gold Value: " +GameObject.Find(targetItem).GetComponent<itemStats>().goldValue+
+			        																				  "\nArmor Bonus: "+GameObject.Find(targetItem).GetComponent<itemStats>().armorBonus+ 
+			        																				  "\n \n Hits Left: " +GameObject.Find(targetItem).GetComponent<itemStats>().hitsLeft+ 
 			        																				  "\n \n" 
 			        																				  +GameObject.Find(targetItem).GetComponent<itemStats>().objectFlair);
+		}
+		//attack items
+		if (_displayObjectName == true && +GameObject.Find(targetItem).GetComponent<itemStats>().type == 2 ) {
+			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+GameObject.Find(targetItem).GetComponent<itemStats>().objectName+  
+			        																				  "\n Type: "+GameObject.Find(targetItem).GetComponent<itemStats>().typeList+
+			      																				      "\n Gold Value: " +GameObject.Find(targetItem).GetComponent<itemStats>().goldValue+
+			      																					  "\n Attack Bonus: "+GameObject.Find(targetItem).GetComponent<itemStats>().attackBonus+ 
+			     																				      "\n \n Hits Left: " +GameObject.Find(targetItem).GetComponent<itemStats>().hitsLeft+  
+			      																					  "\n \n" 
+			      																					  +GameObject.Find(targetItem).GetComponent<itemStats>().objectFlair);
+		}
+		//consumable items
+		if (_displayObjectName == true && +GameObject.Find(targetItem).GetComponent<itemStats>().type == 3 ) {
+			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+GameObject.Find(targetItem).GetComponent<itemStats>().objectName+  
+			        "\n Type: "+GameObject.Find(targetItem).GetComponent<itemStats>().typeList+
+			        "\n Gold Value: " +GameObject.Find(targetItem).GetComponent<itemStats>().goldValue+
+			        "\n \n HP replenish: "+GameObject.Find(targetItem).GetComponent<itemStats>().hpBack+ 
+			        "\n Max Hp Increase: "+GameObject.Find(targetItem).GetComponent<itemStats>().maxHpBonus+ 
+			        "\n \n" 
+			        +GameObject.Find(targetItem).GetComponent<itemStats>().objectFlair);
+		}
+		//valuable items
+		if (_displayObjectName == true && +GameObject.Find(targetItem).GetComponent<itemStats>().type == 4 ) {
+			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+GameObject.Find(targetItem).GetComponent<itemStats>().objectName+  
+			        "\n Type: "+GameObject.Find(targetItem).GetComponent<itemStats>().typeList+
+			        "\n \n Gold Value: " +GameObject.Find(targetItem).GetComponent<itemStats>().goldValue+
+					"\n \n \n \n" 
+			        +GameObject.Find(targetItem).GetComponent<itemStats>().objectFlair);
 		}
 	}
 }

@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7426ded7462f54f43a17872f183cd92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetItem: 
+  targetItem: Item
 --- !u!114 &1330205744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,9 +483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1b2d51359a53c45bdd37a9e7ab0d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectFlair: 
-  type: 2
+  objectName: Cube
+  objectFlair: Cubening!
   objectEffect1: 
   objectEffect2: 
   typeList: 
@@ -563,6 +562,22 @@ Prefab:
     - target: {fileID: 11452398, guid: ded21da8215c721409c4082971ca717e, type: 2}
       propertyPath: shape.Array.data[2].boolArray.Array.data[2]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401552, guid: ded21da8215c721409c4082971ca717e, type: 2}
+      propertyPath: targetItem
+      value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408720, guid: ded21da8215c721409c4082971ca717e, type: 2}
+      propertyPath: objectName
+      value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408720, guid: ded21da8215c721409c4082971ca717e, type: 2}
+      propertyPath: objectFlair
+      value: Cubening!
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408720, guid: ded21da8215c721409c4082971ca717e, type: 2}
+      propertyPath: typeList
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ded21da8215c721409c4082971ca717e, type: 2}
