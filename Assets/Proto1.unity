@@ -485,6 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   objectFlair: 
+  type: 2
   objectEffect1: 
   objectEffect2: 
   typeList: 
