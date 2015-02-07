@@ -8,6 +8,8 @@ public class mouseOver : MonoBehaviour {
 	private string objectEffect1;
 	private string objectEffect2;
 	private string objectFlair;
+	private int xbox = 160;
+	private int ybox = 128;
 
 	private bool _displayObjectName = false;
 	// Use this for initialization
@@ -24,7 +26,7 @@ public class mouseOver : MonoBehaviour {
 	public void DisplayName(){
 		//armor items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 1 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,xbox,ybox),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        																				  "\n Type: "+gameObject.GetComponent<itemStats>().typeList+" "+gameObject.GetComponent<itemStats>().armorType+
 			        																				  "\n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 			        																				  "\nArmor Bonus: "+gameObject.GetComponent<itemStats>().armorBonus+ 
@@ -34,7 +36,7 @@ public class mouseOver : MonoBehaviour {
 		}
 		//attack items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 2 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,xbox,ybox),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        																				  "\n Type: "+gameObject.GetComponent<itemStats>().typeList+
 			      																				      "\n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 			      																					  "\n Attack Bonus: "+gameObject.GetComponent<itemStats>().attackBonus+ 
@@ -44,7 +46,7 @@ public class mouseOver : MonoBehaviour {
 		}
 		//consumable items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 3 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,xbox,ybox),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        "\n Type: "+gameObject.GetComponent<itemStats>().typeList+
 			        "\n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 			        "\n \n HP replenish: "+gameObject.GetComponent<itemStats>().hpBack+ 
@@ -54,7 +56,7 @@ public class mouseOver : MonoBehaviour {
 		}
 		//valuable items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 4 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,xbox,ybox),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        "\n Type: "+gameObject.GetComponent<itemStats>().typeList+
 			        "\n \n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 					"\n \n \n \n" 
