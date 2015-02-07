@@ -42,6 +42,7 @@ public class Drag : MonoBehaviour
 	void OnMouseDown ()
 	{
 		gameObject.collider.enabled = false;
+		gameObject.transform.position += new Vector3(0,0,-1);
 
 		startingPoint = gameObject.transform.position;
 
@@ -75,6 +76,7 @@ public class Drag : MonoBehaviour
 		stickToMouse = false;
 		item.dragging = false;
 		gameObject.collider.enabled = true;
+		gameObject.transform.position += new Vector3(0,0,1);
 	}
 
 	void OnMouseUp ()
