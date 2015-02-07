@@ -12,6 +12,8 @@ public class Drag : MonoBehaviour
 	public GameObject merchant;
 	public GameObject player;
 	public EncounterManager encounterManagScr;
+	public GameObject playerIndicator;
+	public itemStats stats;
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
@@ -24,6 +26,8 @@ public class Drag : MonoBehaviour
 		trash = GameObject.FindGameObjectWithTag("Trash");
 		player = GameObject.FindGameObjectWithTag("Player");
 		encounterManagScr = GameObject.FindGameObjectWithTag("EncounterManager").GetComponent<EncounterManager>();
+		playerIndicator = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Indicator").gameObject;
+		stats = gameObject.GetComponent<itemStats>();
 	}
 
 	void Update(){
@@ -63,6 +67,8 @@ public class Drag : MonoBehaviour
 	{
 		stickToMouse = true;
 		item.dragging = true;
+		if (stats.type!=4)
+			playerIndicator.SetActive(true);
 	}
 
 	void Stick(){
@@ -77,6 +83,7 @@ public class Drag : MonoBehaviour
 		item.dragging = false;
 		gameObject.collider.enabled = true;
 		gameObject.transform.position += new Vector3(0,0,1);
+		playerIndicator.SetActive(false);
 	}
 
 	void OnMouseUp ()
