@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class equipManager : MonoBehaviour {
 	public int hatHitLeft, pantHitLeft, weaponHitLeft, chestHitLeft, bootHitLeft;
@@ -9,12 +10,14 @@ public class equipManager : MonoBehaviour {
 	bool chestEq,pantEq,hatEq,bootEq,weaponEq,potionOn;
 	bool hit = false;
 	public CharacterInWorld charScript;
+	public EquipVisualization equipUI;
 
 	public GameObject hatIcon,chestIcon,pantsIcon,bootIcon,WeaponIcon;
 
 	// Use this for initialization
 	void Start () {
 		charScript = GetComponent<CharacterInWorld>();
+		equipUI = GameObject.FindGameObjectWithTag("EquipUI").GetComponent<EquipVisualization>();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,7 @@ public class equipManager : MonoBehaviour {
 	}
 
 	public void Equip(GameObject targetItem){
+		equipUI.Set(targetItem.name);
 		//weapon
 		if (targetItem.GetComponent<itemStats> ().type == 2) {
 			_swordAtt = targetItem.GetComponent<itemStats> ().attackBonus;
@@ -84,30 +88,31 @@ public class equipManager : MonoBehaviour {
 			bootEq = false;	
 			_bootDef = 0;
 			//remove boots from UI
+			equipUI.RemoveBoots();
 		}
 		if (weaponHitLeft == 0) {
 			weaponEq = false;
 			_swordAtt = 0;
 			// remove weapon from UI
-			
+			equipUI.RemoveWeapon();
 		}
 		if (pantHitLeft == 0) {
 			pantEq = false;
 			_pantDef = 0;
 			//remove pants from UI
-			
+			equipUI.RemovePants();
 		}
 		if (chestHitLeft == 0) {
 			chestEq = false;
 			_chestDef = 0;
 			//remove chest from UI
-			
+			equipUI.RemoveChest();
 		}
 		if (hatHitLeft == 0) {
 			hatEq = false;
 			_hatDef = 0;
 			//remove hat from UI
-			
+			equipUI.RemoveHat();
 		}
 		UpdateCharStats();
 	}
