@@ -20,7 +20,7 @@ public class Grid : MonoBehaviour {
 
 	public bool IsAllowedPosition(ArrayList coord){
 		foreach (int[] xy in coord){
-			Debug.Log(xy[0]+" "+xy[1]);
+			//Debug.Log(xy[0]+" "+xy[1]);
 			int x = xy[0] + size/2;
 			int y = xy[1] + size/2;
 			Debug.Log(x+" "+y);

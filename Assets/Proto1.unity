@@ -174,7 +174,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   objectFlair: 
+  goldValue: 0
+  Bonus1: 0
+  Bonus2: 0
   type: 2
+  tier: 0
+  armorBonus: 0
+  attackBonus: 0
+  hungerBonus: 0
+  hitsLeft: 0
   objectEffect1: 
   objectEffect2: 
   typeList: 
@@ -396,7 +404,7 @@ Transform:
   m_PrefabInternal: {fileID: 1565335635}
   m_GameObject: {fileID: 362464692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1291250307}
@@ -1349,7 +1357,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   objectFlair: 
+  goldValue: 0
+  Bonus1: 0
+  Bonus2: 0
   type: 2
+  tier: 0
+  armorBonus: 0
+  attackBonus: 0
+  hungerBonus: 0
+  hitsLeft: 0
   objectEffect1: 
   objectEffect2: 
   typeList: 
@@ -1446,7 +1462,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 414350, guid: ecd78045f3d6b5546b2cbb72c6784976, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecd78045f3d6b5546b2cbb72c6784976, type: 2}
