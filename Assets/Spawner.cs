@@ -37,8 +37,8 @@ public class Spawner : MonoBehaviour {
 			Spawn();
 	}
 
-	public void NewItem(){
-		itemsInQueue++;
+	public void NewItems(int amount){
+		itemsInQueue += amount;
 	}
 
 	public void PickedItem(){
