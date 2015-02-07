@@ -24,7 +24,7 @@ public class mouseOver : MonoBehaviour {
 	public void DisplayName(){
 		//armor items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 1 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        																				  "\n Type: "+gameObject.GetComponent<itemStats>().typeList+" "+gameObject.GetComponent<itemStats>().armorType+
 			        																				  "\n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 			        																				  "\nArmor Bonus: "+gameObject.GetComponent<itemStats>().armorBonus+ 
@@ -34,7 +34,7 @@ public class mouseOver : MonoBehaviour {
 		}
 		//attack items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 2 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        																				  "\n Type: "+gameObject.GetComponent<itemStats>().typeList+
 			      																				      "\n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 			      																					  "\n Attack Bonus: "+gameObject.GetComponent<itemStats>().attackBonus+ 
@@ -44,7 +44,7 @@ public class mouseOver : MonoBehaviour {
 		}
 		//consumable items
 		if (_displayObjectName == true && +gameObject.GetComponent<itemStats>().type == 3 ) {
-			GUI.Box(new Rect(Event.current.mousePosition.x-155,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
+			GUI.Box(new Rect(Event.current.mousePosition.x+10,Event.current.mousePosition.y,150,128),"Name: "+gameObject.GetComponent<itemStats>().objectName+  
 			        "\n Type: "+gameObject.GetComponent<itemStats>().typeList+
 			        "\n Gold Value: " +gameObject.GetComponent<itemStats>().goldValue+
 			        "\n \n HP replenish: "+gameObject.GetComponent<itemStats>().hpBack+ 

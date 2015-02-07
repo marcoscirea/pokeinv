@@ -217,6 +217,7 @@ public class EncounterManager : MonoBehaviour {
 
 	IEnumerator BattleTextFade(Text text,float time){
 		Vector3 textPos = text.gameObject.transform.position;
+		Vector3 initPos = textPos;
 		float initTime = time;
 		textFadeTime = time;
 		Color tempCol = text.color;
@@ -232,6 +233,7 @@ public class EncounterManager : MonoBehaviour {
 		}
 		tempCol.a = 0;
 		text.color = tempCol;
+		textPos = initPos;
 		yield return 0;
 	}
 
