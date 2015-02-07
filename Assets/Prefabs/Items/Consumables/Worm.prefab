@@ -685,8 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1b2d51359a53c45bdd37a9e7ab0d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectFlair: 
+  objectName: Worm
+  objectFlair: Edible? Incredible!
   goldValue: 0
   Bonus1: 0
   Bonus2: 0
