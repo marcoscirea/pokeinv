@@ -722,7 +722,7 @@ MonoBehaviour:
   shape:
   - boolArray: 010101
   - boolArray: 010100
-  - boolArray: 000000
+  - boolArray: 010000
   auto: 0
 --- !u!114 &11402828
 MonoBehaviour:
