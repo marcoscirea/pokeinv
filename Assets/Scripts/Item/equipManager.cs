@@ -9,6 +9,7 @@ public class equipManager : MonoBehaviour {
 	public int _swordAtt, _chestDef, _bootDef, _hatDef, _pantDef;
 	bool chestEq,pantEq,hatEq,bootEq,weaponEq,potionOn;
 	bool hit = false;
+	public int hpToGiveBack;
 	public CharacterInWorld charScript;
 	public EquipVisualization equipUI;
 
@@ -62,6 +63,10 @@ public class equipManager : MonoBehaviour {
 				bootHitLeft = targetItem.GetComponent<itemStats> ().hitsLeft;
 			}
 
+		}
+
+		if(targetItem.GetComponent<itemStats>().type == 3){
+			hpToGiveBack = targetItem.GetComponent<itemStats> ().hpBack;
 		}
 		UpdateCharStats();
 	}
@@ -120,5 +125,7 @@ public class equipManager : MonoBehaviour {
 	void UpdateCharStats(){
 		charScript.attack = 2+_swordAtt;
 		charScript.armor = 0+_bootDef+_pantDef+_chestDef+_hatDef;
+		charScript.health += hpToGiveBack;
+		hpToGiveBack = 0;
 	}
 }

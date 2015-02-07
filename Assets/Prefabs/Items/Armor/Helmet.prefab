@@ -744,7 +744,7 @@ MonoBehaviour:
   objectEffect1: 
   objectEffect2: 
   typeList: 
-  typelistArmor: 0
+  typelistArmor: 1
 --- !u!114 &11465810
 MonoBehaviour:
   m_ObjectHideFlags: 1
