@@ -32,4 +32,11 @@ public class Enemy : MonoBehaviour {
 		enemyAnimator.SetTrigger("enemyEnterCombat");
 	}
 
+
+	public void MakeEnemiesStronger(int i){
+		attack += i;
+		health += (i*2);
+	}
+
+
 }

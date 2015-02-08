@@ -726,6 +726,10 @@ MonoBehaviour:
   merchant: {fileID: 0}
   player: {fileID: 0}
   encounterManagScr: {fileID: 0}
+  playerIndicator: {fileID: 0}
+  merchantIndicator: {fileID: 0}
+  stats: {fileID: 0}
+  interfaceSoundScript: {fileID: 0}
 --- !u!114 &11476974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Leaf
-  objectFlair: Leaf it alone!
+  objectFlair: Monetary re-leaf
   goldValue: 0
   Bonus1: 0
   Bonus2: 0

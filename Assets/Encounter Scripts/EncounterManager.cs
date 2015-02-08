@@ -4,6 +4,17 @@ using System.Collections;
 
 public class EncounterManager : MonoBehaviour {
 
+	public bool inTutorial = true;
+	public bool shouldSwitchTutorial = false;
+	public int tutEnumerator = 0;
+	public GameObject tutObject;
+	public GameObject tutObj1;
+	public GameObject tutObj2;
+	public GameObject tutObj3;
+	public GameObject mrchTutObject;
+	public bool firstTimeMeetingMerchant = true;
+
+
 	public GameObject playerCharacter;
 	public GameObject currentEnemy;
 	public CharacterInWorld characterScript;
@@ -16,6 +27,8 @@ public class EncounterManager : MonoBehaviour {
 	bool inEncounter = false;
 	public Spawner itemSpawner;
 	public AudioSource defeatChestSound;
+	public int enemyStrengthIncreaseCounter = 0;
+	public int enemyStrengthIncreasePoint = 2;
 
 	bool fightIsBeginning = false;
 	bool shouldFight = false;
@@ -46,10 +59,15 @@ public class EncounterManager : MonoBehaviour {
 	//game over
 	public GameObject gameOverObject;
 	public Text gameOverText;
+	public float globalTimer;
 
 	// Use this for initialization
 	void Start () {
-
+		tutObj1.SetActive(true);
+		tutObj2.SetActive(false);
+		tutObj3.SetActive(false);
+		mrchTutObject.SetActive(false);
+		
 		CalculateTimeToNextEncounter();
 		initialEnemyPosition = new Vector3(10,0,0); // Not sure if this is the right position for the actual scene.
 		fightEnemyPosition = new Vector3(3,0,0);
@@ -66,6 +84,36 @@ public class EncounterManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(inTutorial){
+			Time.timeScale = 0;
+
+			if(shouldSwitchTutorial){
+				if(tutEnumerator == 0){
+					tutObj1.SetActive(true);
+					tutObj2.SetActive(false);
+					tutObj3.SetActive(false);
+				}
+				else if(tutEnumerator == 1){
+					tutObj1.SetActive(false);
+					tutObj2.SetActive(true);
+					tutObj3.SetActive(false);
+				}
+				else if(tutEnumerator == 2){
+					tutObj1.SetActive(false);
+					tutObj2.SetActive(false);
+					tutObj3.SetActive(true);
+				}
+				else if(tutEnumerator == 3){
+					inTutorial = false;
+					tutObj1.SetActive(false);
+					tutObj2.SetActive(false);
+					tutObj3.SetActive(false);
+					tutObject.SetActive(false);
+					Time.timeScale = 1.0f;
+				}
+				shouldSwitchTutorial = false;
+			}
+		}
 
 		if(!isFighting || !inMerchantEncounter){
 			timeToNextEncounter -= Time.deltaTime;
@@ -83,6 +131,8 @@ public class EncounterManager : MonoBehaviour {
 		if(inMerchantEncounter){
 			Trade ();
 		}
+
+		globalTimer += Time.deltaTime;
 	}
 
 
@@ -109,6 +159,13 @@ public class EncounterManager : MonoBehaviour {
 			merchantExitButton.gameObject.SetActive(true);
 			characterScript.InMerchantShouldStop();
 			backgroundScr.StopTheWorld();
+
+			if(firstTimeMeetingMerchant){
+				mrchTutObject.SetActive(true);
+				Time.timeScale = 0.0f;
+				firstTimeMeetingMerchant = false;
+			}
+
 		}
 		else{
 			// FIGHT
@@ -148,6 +205,10 @@ public class EncounterManager : MonoBehaviour {
 				fightTimer = fightAttackTime;
 				fightIsBeginning = true;
 				currEnemyScript.PlayEnterCombatAnimation();
+
+				currEnemyScript.attack += (enemyStrengthIncreaseCounter/2);
+				currEnemyScript.health += (enemyStrengthIncreaseCounter/2);
+				Debug.Log("aeofawe "+currEnemyScript.attack+"  "+enemyStrengthIncreaseCounter);
 			}
 			chanceOfMerchant += Random.Range(merchantChanceIncrease,merchantChanceIncrease+10);
 		}
@@ -184,7 +245,7 @@ public class EncounterManager : MonoBehaviour {
 			currEnemyScript.PlayAttackAnimation();
 
 			//subtract health values
-			characterScript.health -= currEnemyScript.attack;
+			characterScript.health -= Mathf.Max(0,currEnemyScript.attack-characterScript.armor);
 			currEnemyScript.health -= characterScript.attack;
 
 			enemyAttackText.color = new Color(enemyAttackText.color.r,enemyAttackText.color.g,enemyAttackText.color.b,1);
@@ -193,7 +254,7 @@ public class EncounterManager : MonoBehaviour {
 			enemyAttackText.transform.position = eTextPos;
 			playerAttackText.transform.position = pTextPos;
 
-			playerAttackText.text = ""+currEnemyScript.attack;
+			playerAttackText.text = ""+Mathf.Max(0,currEnemyScript.attack-characterScript.armor);
 			StartCoroutine(BattleTextFade(playerAttackText,timeToFadeText));
 
 			enemyAttackText.text = ""+characterScript.attack;
@@ -216,6 +277,7 @@ public class EncounterManager : MonoBehaviour {
 				
 				//GAME OVER
 				gameOverObject.SetActive(true);
+				gameOverText.text = "You were a backpack for "+Mathf.Round(globalTimer)+" seconds";
 				Time.timeScale = 0;
 			}
 		}
@@ -231,6 +293,10 @@ public class EncounterManager : MonoBehaviour {
 		inMerchantEncounter = false;
 		inEncounter = false;
 		CalculateTimeToNextEncounter();
+
+		enemyStrengthIncreaseCounter++;
+
+
 	}
 
 	IEnumerator BattleTextFade(Text text,float time){
@@ -287,6 +353,20 @@ public class EncounterManager : MonoBehaviour {
 		characterScript.NotInMerchantShouldStart();
 		backgroundScr.StartTheWorld();
 
+	}
+
+
+
+
+	public void AdvanceTutorial(){
+		tutEnumerator++;
+		shouldSwitchTutorial = true;
+		Debug.Log("ADVANCE");
+	}
+
+	public void MrchTutOver(){
+		mrchTutObject.SetActive(false);
+		Time.timeScale = 1.0f;
 	}
 
 }
