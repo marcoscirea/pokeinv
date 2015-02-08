@@ -761,9 +761,9 @@ MonoBehaviour:
   dragging: 0
   snap: {fileID: 0}
   shape:
-  - boolArray: 000101
-  - boolArray: 000101
   - boolArray: 010101
+  - boolArray: 000101
+  - boolArray: 000101
   auto: 0
 --- !u!114 &11455480
 MonoBehaviour:
