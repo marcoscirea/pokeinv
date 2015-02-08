@@ -4,6 +4,14 @@ using System.Collections;
 
 public class EncounterManager : MonoBehaviour {
 
+	public bool inTutorial = true;
+	public bool shouldSwitchTutorial = false;
+	public int tutEnumerator = 0;
+	public GameObject tutObj1;
+	public GameObject tutObj2;
+	public GameObject tutObj3;
+
+
 	public GameObject playerCharacter;
 	public GameObject currentEnemy;
 	public CharacterInWorld characterScript;
@@ -69,6 +77,30 @@ public class EncounterManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(inTutorial){
+			Time.timeScale = 0;
+
+			if(shouldSwitchTutorial){
+				if(tutEnumerator == 0){
+					tutObj1.SetActive(true);
+					tutObj2.SetActive(false);
+					tutObj3.SetActive(false);
+				}
+				else if(tutEnumerator == 1){
+					tutObj1.SetActive(false);
+					tutObj2.SetActive(true);
+					tutObj3.SetActive(false);
+				}
+				else if(tutEnumerator == 2){
+					tutObj1.SetActive(false);
+					tutObj2.SetActive(false);
+					tutObj3.SetActive(true);
+				}
+				shouldSwitchTutorial = false;
+			}
+
+
+		}
 
 		if(!isFighting || !inMerchantEncounter){
 			timeToNextEncounter -= Time.deltaTime;
@@ -193,7 +225,7 @@ public class EncounterManager : MonoBehaviour {
 			currEnemyScript.PlayAttackAnimation();
 
 			//subtract health values
-			characterScript.health -= currEnemyScript.attack;
+			characterScript.health -= Mathf.Max(0,currEnemyScript.attack-characterScript.armor);
 			currEnemyScript.health -= characterScript.attack;
 
 			enemyAttackText.color = new Color(enemyAttackText.color.r,enemyAttackText.color.g,enemyAttackText.color.b,1);
@@ -301,6 +333,14 @@ public class EncounterManager : MonoBehaviour {
 		characterScript.NotInMerchantShouldStart();
 		backgroundScr.StartTheWorld();
 
+	}
+
+
+
+
+	public void AdvanceTutorial(){
+		tutEnumerator++;
+		Debug.Log("ADVANCE");
 	}
 
 }
