@@ -351,8 +351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .39199999}
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 25e3b6533e5d0c148ba0505acc1f39f3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -710,6 +710,8 @@ MonoBehaviour:
   - {fileID: 372254464}
   - {fileID: 372254463}
   - {fileID: 372254462}
+  baseAttack: 0
+  baseArmor: 0
 --- !u!4 &372254457
 Transform:
   m_ObjectHideFlags: 0
@@ -1210,8 +1212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .39199999}
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 2934ebed0355a4144ae5048861b97023, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1348,8 +1350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .39199999}
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b87ea427e4d07af42b249b697f58f24f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1697,6 +1699,51 @@ Prefab:
     - target: {fileID: 22486166, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 158
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491732, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bd4f002ac433ef46967145097cb11f3,
+        type: 3}
+    - target: {fileID: 11491732, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491726, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 25e3b6533e5d0c148ba0505acc1f39f3,
+        type: 3}
+    - target: {fileID: 11491726, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491728, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2934ebed0355a4144ae5048861b97023,
+        type: 3}
+    - target: {fileID: 11491728, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491734, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ef137799c88db342a1129782451b349,
+        type: 3}
+    - target: {fileID: 11491734, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491730, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b87ea427e4d07af42b249b697f58f24f,
+        type: 3}
+    - target: {fileID: 11491730, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
+      propertyPath: m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f737e35bb3b484d6481bbaa614954625, type: 2}
@@ -2141,8 +2188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .39199999}
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1bd4f002ac433ef46967145097cb11f3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2597,8 +2644,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: .39199999}
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6ef137799c88db342a1129782451b349, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3893,4 +3940,8 @@ MonoBehaviour:
   stick: {fileID: 21300000, guid: eae26acf7fc5ed04ba34a020adc44248, type: 3}
   sword: {fileID: 21300000, guid: 14f2955413fa62342ae2bdfc508a46c5, type: 3}
   wood: {fileID: 21300000, guid: 442dc5720a2be3b408de578259158e5f, type: 3}
-  Default: {fileID: 0}
+  defaultHat: {fileID: 0}
+  defaultChest: {fileID: 0}
+  defaultPants: {fileID: 0}
+  defaultBoots: {fileID: 0}
+  defaultWeapon: {fileID: 0}
