@@ -9,7 +9,9 @@ public class CharacterInWorld : MonoBehaviour {
 	public equipManager eqManag;
 	//public int fireAtt, coldAtt, sharpnessAtt,AcidAtt,lightningAtt;
 	//public int fireDef, coldDef, sharpnessDef,AcidDef,lightningDef;
-
+	public AudioSource[] hitSounds;
+	public int baseAttack;
+	public int baseArmor;
 
 	Animator playerAnimator;
 
@@ -17,8 +19,10 @@ public class CharacterInWorld : MonoBehaviour {
 	void Start () {
 	//	health = 100;
 		maxHealth = health;
-		attack = 2;
-		armor = 0;
+		baseAttack = 2;
+		attack = baseAttack;
+		baseArmor = 0;
+		armor = baseArmor;
 		eqManag = GetComponent<equipManager>();
 
 		playerAnimator = GetComponent<Animator>();
@@ -42,6 +46,11 @@ public class CharacterInWorld : MonoBehaviour {
 
 	public void NotInMerchantShouldStart(){
 		playerAnimator.SetBool("inMerchant",false);
+	}
+
+	public void PlayHitSound(){
+		int soundChooser = Random.Range(0,3);
+		hitSounds[soundChooser].Play();
 	}
 
 

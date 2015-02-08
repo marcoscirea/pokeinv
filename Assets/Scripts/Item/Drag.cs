@@ -12,6 +12,10 @@ public class Drag : MonoBehaviour
 	public GameObject merchant;
 	public GameObject player;
 	public EncounterManager encounterManagScr;
+	public GameObject playerIndicator;
+	public GameObject merchantIndicator;
+	public itemStats stats;
+	public interfaceSounds interfaceSoundScript;
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
@@ -24,21 +28,28 @@ public class Drag : MonoBehaviour
 		trash = GameObject.FindGameObjectWithTag("Trash");
 		player = GameObject.FindGameObjectWithTag("Player");
 		encounterManagScr = GameObject.FindGameObjectWithTag("EncounterManager").GetComponent<EncounterManager>();
+		playerIndicator = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Indicator").gameObject;
+		stats = gameObject.GetComponent<itemStats>();
+		interfaceSoundScript = GameObject.FindGameObjectWithTag("InterfaceSound").GetComponent<interfaceSounds>();
 	}
 
 	void Update(){
+
 		if (stickToMouse)
 			Stick();
 
 		//Setting merchant when merchant spawns.
 		if(encounterManagScr.inMerchantEncounter && merchant == null){
 			merchant = GameObject.FindGameObjectWithTag("Merchant");
+			merchantIndicator = GameObject.FindGameObjectWithTag("Merchant").transform.FindChild("Indicator").gameObject;
 		}
 		if(!encounterManagScr.inMerchantEncounter && merchant != null){
 			merchant = null;
+			merchantIndicator=null;
 		}
 	}
-	
+
+
 	void OnMouseDown ()
 	{
 		gameObject.collider.enabled = false;
@@ -49,6 +60,8 @@ public class Drag : MonoBehaviour
 		screenPoint = Camera.main.WorldToScreenPoint (gameObject.transform.position);
 		
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+
+		interfaceSoundScript.PickUpSound();
 
 		//free space if moving item in grid
 		if (!stickToMouse)
@@ -61,11 +74,29 @@ public class Drag : MonoBehaviour
 	
 	void OnMouseDrag ()
 	{
+
 		stickToMouse = true;
 		item.dragging = true;
+		if (stats.type!=4)
+			playerIndicator.SetActive(true);
+		if (merchant !=null)
+			merchantIndicator.SetActive(true);
 	}
 
 	void Stick(){
+		if (OverObject (player)) {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.green;
+			Debug.Log ("green it up!");
+		} else {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.white;	
+		}
+
+		if (OverObject (trash)) {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.red;
+		} else {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.white;	
+		}
+
 		Vector3 curScreenPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 		
 		Vector3 curPosition = Camera.main.ScreenToWorldPoint (curScreenPoint) + offset;
@@ -77,11 +108,19 @@ public class Drag : MonoBehaviour
 		item.dragging = false;
 		gameObject.collider.enabled = true;
 		gameObject.transform.position += new Vector3(0,0,1);
+		playerIndicator.SetActive(false);
+
+		interfaceSoundScript.DropItemSound();
+
+		if (merchant !=null)
+			merchantIndicator.SetActive(false);
+
 	}
 
 	void OnMouseUp ()
 	{
 		if (OverObject(trash)){
+			interfaceSoundScript.TrashItemSound();
 			Destroy(gameObject);
 		}
 		if(merchant != null){
@@ -145,6 +184,7 @@ public class Drag : MonoBehaviour
 		//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitInf;
 		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hitInf)){
+			Debug.Log(hitInf.collider.gameObject.tag);
 			if(hitInf.collider.gameObject.tag == obj.tag){
 				return true;
 			}
