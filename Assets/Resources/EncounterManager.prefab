@@ -2245,7 +2245,7 @@ MonoBehaviour:
   armor: {fileID: 21300000, guid: 25e3b6533e5d0c148ba0505acc1f39f3, type: 3}
   boots: {fileID: 21300000, guid: 6ef137799c88db342a1129782451b349, type: 3}
   pants: {fileID: 21300000, guid: 2934ebed0355a4144ae5048861b97023, type: 3}
-  dagger: {fileID: 21300000, guid: 35856b3756cda3d43853b0c3da13ea0b, type: 3}
+  dagger: {fileID: 21300000, guid: b87ea427e4d07af42b249b697f58f24f, type: 3}
   jester: {fileID: 21300000, guid: 7900c9d2bd5db53499ded1ac9db79101, type: 3}
   defaultHat: {fileID: 0}
   defaultChest: {fileID: 0}
