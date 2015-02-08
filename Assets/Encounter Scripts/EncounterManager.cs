@@ -48,6 +48,7 @@ public class EncounterManager : MonoBehaviour {
 	//game over
 	public GameObject gameOverObject;
 	public Text gameOverText;
+	public float globalTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -85,6 +86,8 @@ public class EncounterManager : MonoBehaviour {
 		if(inMerchantEncounter){
 			Trade ();
 		}
+
+		globalTimer += Time.deltaTime;
 	}
 
 
@@ -222,6 +225,7 @@ public class EncounterManager : MonoBehaviour {
 				
 				//GAME OVER
 				gameOverObject.SetActive(true);
+				gameOverText.text = "You were a backpack for "+Mathf.Round(globalTimer)+" seconds";
 				Time.timeScale = 0;
 			}
 		}
