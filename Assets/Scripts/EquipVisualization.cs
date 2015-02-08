@@ -14,6 +14,7 @@ public class EquipVisualization : MonoBehaviour {
 	public Sprite boots;
 	public Sprite pants;
 	public Sprite dagger;
+	public Sprite jester;
 
 	public Sprite defaultHat;
 	public Sprite defaultChest;
@@ -84,6 +85,10 @@ public class EquipVisualization : MonoBehaviour {
 		case "Dagger(Clone)":
 			transform.FindChild("Weapon").GetComponent<Image>().sprite = dagger;
 			transform.FindChild("Weapon").GetComponent<Image>().color = notTransparent;
+			break;
+		case "JesterHat(Clone)":
+			transform.FindChild("Hat").GetComponent<Image>().sprite = jester;
+			transform.FindChild("Hat").GetComponent<Image>().color = notTransparent;
 			break;
 		}
 	}

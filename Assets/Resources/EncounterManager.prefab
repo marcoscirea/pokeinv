@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &115590
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &143068
 GameObject:
   m_ObjectHideFlags: 1
@@ -708,8 +708,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -152, y: -28, z: 0}
-  m_LocalScale: {x: .932260454, y: .932260454, z: .932260454}
+  m_LocalPosition: {x: -166.289993, y: -37.6500015, z: .00415490009}
+  m_LocalScale: {x: 1.25695205, y: 1.2569524, z: 1.2569524}
   m_Children:
   - {fileID: 22411574}
   - {fileID: 22441428}
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .960784316}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1872,7 +1872,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11486160}
-        m_MethodName: AdvanceTutorial
+        m_MethodName: MrchTutOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2003,7 +2003,7 @@ MonoBehaviour:
   tutObj1: {fileID: 143070}
   tutObj2: {fileID: 109674}
   tutObj3: {fileID: 141430}
-  mrchTutObject: {fileID: 0}
+  mrchTutObject: {fileID: 111576}
   firstTimeMeetingMerchant: 1
   playerCharacter: {fileID: 0}
   currentEnemy: {fileID: 0}
@@ -2246,6 +2246,7 @@ MonoBehaviour:
   boots: {fileID: 21300000, guid: 6ef137799c88db342a1129782451b349, type: 3}
   pants: {fileID: 21300000, guid: 2934ebed0355a4144ae5048861b97023, type: 3}
   dagger: {fileID: 21300000, guid: 35856b3756cda3d43853b0c3da13ea0b, type: 3}
+  jester: {fileID: 21300000, guid: 7900c9d2bd5db53499ded1ac9db79101, type: 3}
   defaultHat: {fileID: 0}
   defaultChest: {fileID: 0}
   defaultPants: {fileID: 0}
@@ -2656,7 +2657,7 @@ RectTransform:
   m_GameObject: {fileID: 111574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -.0255929995}
-  m_LocalScale: {x: .490086079, y: .490086079, z: .490086079}
+  m_LocalScale: {x: .318545014, y: .490086079, z: .490086079}
   m_Children: []
   m_Father: {fileID: 411572}
   m_RootOrder: 0
