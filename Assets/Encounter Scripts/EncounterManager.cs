@@ -15,7 +15,7 @@ public class EncounterManager : MonoBehaviour {
 	Vector3 fightEnemyPosition;
 	bool inEncounter = false;
 	public Spawner itemSpawner;
-
+	public AudioSource defeatChestSound;
 
 	bool fightIsBeginning = false;
 	bool shouldFight = false;
@@ -222,6 +222,9 @@ public class EncounterManager : MonoBehaviour {
 	}
 
 	void EndFight(){
+		if(currentEnemy.name == "Chest(Clone)"){
+			defeatChestSound.Play();
+		}
 		isFighting = false;
 		currentEnemy = null;
 		currEnemyScript = null;

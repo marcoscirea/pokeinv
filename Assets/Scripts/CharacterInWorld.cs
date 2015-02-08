@@ -45,7 +45,6 @@ public class CharacterInWorld : MonoBehaviour {
 	}
 
 	public void PlayHitSound(){
-		Debug.Log("play sound");
 		int soundChooser = Random.Range(0,3);
 		hitSounds[soundChooser].Play();
 	}
