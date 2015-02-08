@@ -15,6 +15,7 @@ public class EncounterManager : MonoBehaviour {
 	Vector3 fightEnemyPosition;
 	bool inEncounter = false;
 	public Spawner itemSpawner;
+	public AudioSource defeatChestSound;
 
 	bool fightIsBeginning = false;
 	bool shouldFight = false;
@@ -39,6 +40,8 @@ public class EncounterManager : MonoBehaviour {
 	public Text goldText;
 	Vector3 gTextPos;
 	public backgroundRotate backgroundScr;
+	public AudioSource sellSound;
+	public AudioSource sellLotsSound;
 
 	//game over
 	public GameObject gameOverObject;
@@ -219,6 +222,9 @@ public class EncounterManager : MonoBehaviour {
 	}
 
 	void EndFight(){
+		if(currentEnemy.name == "Chest(Clone)"){
+			defeatChestSound.Play();
+		}
 		isFighting = false;
 		currentEnemy = null;
 		currEnemyScript = null;
@@ -229,7 +235,6 @@ public class EncounterManager : MonoBehaviour {
 
 	IEnumerator BattleTextFade(Text text,float time){
 		Vector3 textPos = text.gameObject.transform.position;
-		Debug.Log("start "+textPos);
 		Vector3 initPos = textPos;
 		float initTime = time;
 		textFadeTime = time;
@@ -247,7 +252,6 @@ public class EncounterManager : MonoBehaviour {
 		tempCol.a = 0;
 		text.color = tempCol;
 		textPos = initPos;
-		Debug.Log("end "+textPos);
 		yield return 0;
 	}
 
@@ -263,6 +267,13 @@ public class EncounterManager : MonoBehaviour {
 		goldText.transform.position = gTextPos;
 		StartCoroutine(BattleTextFade(goldText,1f));
 		characterScript.gold += i.goldValue;
+		if(i.goldValue > 1000){
+			sellLotsSound.Play();
+		}
+		else{
+			sellSound.Play ();
+		}
+
 	}
 
 	public void EndTrade(){

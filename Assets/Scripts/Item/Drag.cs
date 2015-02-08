@@ -13,7 +13,9 @@ public class Drag : MonoBehaviour
 	public GameObject player;
 	public EncounterManager encounterManagScr;
 	public GameObject playerIndicator;
+	public GameObject merchantIndicator;
 	public itemStats stats;
+	public interfaceSounds interfaceSoundScript;
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
@@ -28,6 +30,7 @@ public class Drag : MonoBehaviour
 		encounterManagScr = GameObject.FindGameObjectWithTag("EncounterManager").GetComponent<EncounterManager>();
 		playerIndicator = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Indicator").gameObject;
 		stats = gameObject.GetComponent<itemStats>();
+		interfaceSoundScript = GameObject.FindGameObjectWithTag("InterfaceSound").GetComponent<interfaceSounds>();
 	}
 
 	void Update(){
@@ -38,9 +41,11 @@ public class Drag : MonoBehaviour
 		//Setting merchant when merchant spawns.
 		if(encounterManagScr.inMerchantEncounter && merchant == null){
 			merchant = GameObject.FindGameObjectWithTag("Merchant");
+			merchantIndicator = GameObject.FindGameObjectWithTag("Merchant").transform.FindChild("Indicator").gameObject;
 		}
 		if(!encounterManagScr.inMerchantEncounter && merchant != null){
 			merchant = null;
+			merchantIndicator=null;
 		}
 	}
 
@@ -56,6 +61,8 @@ public class Drag : MonoBehaviour
 		
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
 
+		interfaceSoundScript.PickUpSound();
+
 		//free space if moving item in grid
 		if (!stickToMouse)
 			item.RemoveFromGrid();
@@ -67,10 +74,13 @@ public class Drag : MonoBehaviour
 	
 	void OnMouseDrag ()
 	{
+
 		stickToMouse = true;
 		item.dragging = true;
 		if (stats.type!=4)
 			playerIndicator.SetActive(true);
+		if (merchant !=null)
+			merchantIndicator.SetActive(true);
 	}
 
 	void Stick(){
@@ -99,11 +109,18 @@ public class Drag : MonoBehaviour
 		gameObject.collider.enabled = true;
 		gameObject.transform.position += new Vector3(0,0,1);
 		playerIndicator.SetActive(false);
+
+		interfaceSoundScript.DropItemSound();
+
+		if (merchant !=null)
+			merchantIndicator.SetActive(false);
+
 	}
 
 	void OnMouseUp ()
 	{
 		if (OverObject(trash)){
+			interfaceSoundScript.TrashItemSound();
 			Destroy(gameObject);
 		}
 		if(merchant != null){

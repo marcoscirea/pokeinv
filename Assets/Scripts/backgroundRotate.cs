@@ -4,7 +4,7 @@ using System.Collections;
 public class backgroundRotate : MonoBehaviour {
 
 
-	public float rotateSpeed = 1f;
+	float rotateSpeed = 1.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +24,6 @@ public class backgroundRotate : MonoBehaviour {
 	}
 
 	public void StartTheWorld(){
-		rotateSpeed = 1f;
+		rotateSpeed = 1.5f;
 	}
 }
