@@ -131,8 +131,11 @@ public class EncounterManager : MonoBehaviour {
 		if(inMerchantEncounter){
 			Trade ();
 		}
+		else{
+			globalTimer += Time.deltaTime;
+		}
 
-		globalTimer += Time.deltaTime;
+
 	}
 
 
