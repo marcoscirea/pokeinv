@@ -254,7 +254,7 @@ public class EncounterManager : MonoBehaviour {
 			enemyAttackText.transform.position = eTextPos;
 			playerAttackText.transform.position = pTextPos;
 
-			playerAttackText.text = ""+currEnemyScript.attack;
+			playerAttackText.text = ""+Mathf.Max(0,currEnemyScript.attack-characterScript.armor);
 			StartCoroutine(BattleTextFade(playerAttackText,timeToFadeText));
 
 			enemyAttackText.text = ""+characterScript.attack;

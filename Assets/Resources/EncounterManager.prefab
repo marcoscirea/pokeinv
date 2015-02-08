@@ -1657,8 +1657,8 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Congratulations! \nYou have been equipped as the backpack of the mighty
-    hero, ____.\nIt is your job to manage his items and make sure he is equipped with
-    what he needs at all times.\n"
+    hero, Lester the Quester.\nIt is your job to manage his items and make sure he
+    is equipped with what he needs at all times.\n"
 --- !u!114 &11444878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2822,7 +2822,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 44, y: 26}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22444878
 RectTransform:
