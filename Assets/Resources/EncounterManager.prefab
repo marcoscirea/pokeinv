@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &117336
 GameObject:
   m_ObjectHideFlags: 1
@@ -1204,11 +1204,16 @@ MonoBehaviour:
   stick: {fileID: 21300000, guid: eae26acf7fc5ed04ba34a020adc44248, type: 3}
   sword: {fileID: 21300000, guid: 14f2955413fa62342ae2bdfc508a46c5, type: 3}
   wood: {fileID: 21300000, guid: 442dc5720a2be3b408de578259158e5f, type: 3}
+  armor: {fileID: 0}
+  boots: {fileID: 0}
+  pants: {fileID: 0}
+  dagger: {fileID: 0}
   defaultHat: {fileID: 0}
   defaultChest: {fileID: 0}
   defaultPants: {fileID: 0}
   defaultBoots: {fileID: 0}
   defaultWeapon: {fileID: 0}
+  newAlpha: 200
 --- !u!222 &22200168
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1321,7 +1326,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!224 &22400168
 RectTransform:
   m_ObjectHideFlags: 1
