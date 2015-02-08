@@ -13,6 +13,7 @@ public class Drag : MonoBehaviour
 	public GameObject player;
 	public EncounterManager encounterManagScr;
 	public GameObject playerIndicator;
+	public GameObject merchantIndicator;
 	public itemStats stats;
 	public interfaceSounds interfaceSoundScript;
 
@@ -39,9 +40,11 @@ public class Drag : MonoBehaviour
 		//Setting merchant when merchant spawns.
 		if(encounterManagScr.inMerchantEncounter && merchant == null){
 			merchant = GameObject.FindGameObjectWithTag("Merchant");
+			merchantIndicator = GameObject.FindGameObjectWithTag("Merchant").transform.FindChild("Indicator").gameObject;
 		}
 		if(!encounterManagScr.inMerchantEncounter && merchant != null){
 			merchant = null;
+			merchantIndicator=null;
 		}
 	}
 	
@@ -74,6 +77,8 @@ public class Drag : MonoBehaviour
 		item.dragging = true;
 		if (stats.type!=4)
 			playerIndicator.SetActive(true);
+		if (merchant !=null)
+			merchantIndicator.SetActive(true);
 	}
 
 	void Stick(){
@@ -89,7 +94,12 @@ public class Drag : MonoBehaviour
 		gameObject.collider.enabled = true;
 		gameObject.transform.position += new Vector3(0,0,1);
 		playerIndicator.SetActive(false);
+<<<<<<< HEAD
 		interfaceSoundScript.DropItemSound();
+=======
+		if (merchant !=null)
+			merchantIndicator.SetActive(false);
+>>>>>>> FETCH_HEAD
 	}
 
 	void OnMouseUp ()
