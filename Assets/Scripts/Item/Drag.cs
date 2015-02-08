@@ -31,6 +31,7 @@ public class Drag : MonoBehaviour
 	}
 
 	void Update(){
+
 		if (stickToMouse)
 			Stick();
 
@@ -42,7 +43,8 @@ public class Drag : MonoBehaviour
 			merchant = null;
 		}
 	}
-	
+
+
 	void OnMouseDown ()
 	{
 		gameObject.collider.enabled = false;
@@ -72,6 +74,19 @@ public class Drag : MonoBehaviour
 	}
 
 	void Stick(){
+		if (OverObject (player)) {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.green;
+			Debug.Log ("green it up!");
+		} else {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.white;	
+		}
+
+		if (OverObject (trash)) {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.red;
+		} else {
+			transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().color = Color.white;	
+		}
+
 		Vector3 curScreenPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 		
 		Vector3 curPosition = Camera.main.ScreenToWorldPoint (curScreenPoint) + offset;
@@ -152,6 +167,7 @@ public class Drag : MonoBehaviour
 		//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitInf;
 		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hitInf)){
+			Debug.Log(hitInf.collider.gameObject.tag);
 			if(hitInf.collider.gameObject.tag == obj.tag){
 				return true;
 			}
