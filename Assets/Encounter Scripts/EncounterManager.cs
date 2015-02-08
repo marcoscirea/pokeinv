@@ -7,9 +7,12 @@ public class EncounterManager : MonoBehaviour {
 	public bool inTutorial = true;
 	public bool shouldSwitchTutorial = false;
 	public int tutEnumerator = 0;
+	public GameObject tutObject;
 	public GameObject tutObj1;
 	public GameObject tutObj2;
 	public GameObject tutObj3;
+	public GameObject mrchTutObject;
+	public bool firstTimeMeetingMerchant = true;
 
 
 	public GameObject playerCharacter;
@@ -60,7 +63,11 @@ public class EncounterManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		tutObj1.SetActive(true);
+		tutObj2.SetActive(false);
+		tutObj3.SetActive(false);
+		mrchTutObject.SetActive(false);
+		
 		CalculateTimeToNextEncounter();
 		initialEnemyPosition = new Vector3(10,0,0); // Not sure if this is the right position for the actual scene.
 		fightEnemyPosition = new Vector3(3,0,0);
@@ -96,10 +103,16 @@ public class EncounterManager : MonoBehaviour {
 					tutObj2.SetActive(false);
 					tutObj3.SetActive(true);
 				}
+				else if(tutEnumerator == 3){
+					inTutorial = false;
+					tutObj1.SetActive(false);
+					tutObj2.SetActive(false);
+					tutObj3.SetActive(false);
+					tutObject.SetActive(false);
+					Time.timeScale = 1.0f;
+				}
 				shouldSwitchTutorial = false;
 			}
-
-
 		}
 
 		if(!isFighting || !inMerchantEncounter){
@@ -146,6 +159,13 @@ public class EncounterManager : MonoBehaviour {
 			merchantExitButton.gameObject.SetActive(true);
 			characterScript.InMerchantShouldStop();
 			backgroundScr.StopTheWorld();
+
+			if(firstTimeMeetingMerchant){
+				mrchTutObject.SetActive(true);
+				Time.timeScale = 0.0f;
+				firstTimeMeetingMerchant = false;
+			}
+
 		}
 		else{
 			// FIGHT
@@ -340,7 +360,13 @@ public class EncounterManager : MonoBehaviour {
 
 	public void AdvanceTutorial(){
 		tutEnumerator++;
+		shouldSwitchTutorial = true;
 		Debug.Log("ADVANCE");
+	}
+
+	public void MrchTutOver(){
+		mrchTutObject.SetActive(false);
+		Time.timeScale = 1.0f;
 	}
 
 }
