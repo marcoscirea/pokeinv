@@ -19,15 +19,15 @@ public class Merchant : MonoBehaviour {
 	void Start () {
 		merchAnimator = GetComponent<Animator>();
 		chara = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterInWorld>();
-		if (chara.gold >= goldForUpgrade){
-			transform.FindChild("sword").gameObject.SetActive(true);
-			transform.FindChild("shield").gameObject.SetActive(true);
-		}
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (chara.gold >= goldForUpgrade){
+			transform.FindChild("sword").gameObject.SetActive(true);
+			transform.FindChild("shield").gameObject.SetActive(true);
+        }
 	}
 
 	public void PlayMerchantEnterAnimation() {
