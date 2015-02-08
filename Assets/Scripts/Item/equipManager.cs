@@ -124,9 +124,9 @@ public class equipManager : MonoBehaviour {
 		UpdateCharStats();
 	}
 
-	void UpdateCharStats(){
-		charScript.attack = 2+_swordAtt;
-		charScript.armor = 0+_bootDef+_pantDef+_chestDef+_hatDef;
+	public void UpdateCharStats(){
+		charScript.attack = charScript.baseAttack +_swordAtt;
+		charScript.armor = charScript.baseArmor +_bootDef+_pantDef+_chestDef+_hatDef;
 		charScript.health += hpToGiveBack;
 		hpToGiveBack = 0;
 	}
