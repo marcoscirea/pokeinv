@@ -94,12 +94,12 @@ public class Drag : MonoBehaviour
 		gameObject.collider.enabled = true;
 		gameObject.transform.position += new Vector3(0,0,1);
 		playerIndicator.SetActive(false);
-<<<<<<< HEAD
+
 		interfaceSoundScript.DropItemSound();
-=======
+
 		if (merchant !=null)
 			merchantIndicator.SetActive(false);
->>>>>>> FETCH_HEAD
+
 	}
 
 	void OnMouseUp ()
