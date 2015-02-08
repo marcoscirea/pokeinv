@@ -16,6 +16,8 @@ public class EncounterManager : MonoBehaviour {
 	bool inEncounter = false;
 	public Spawner itemSpawner;
 	public AudioSource defeatChestSound;
+	public int enemyStrengthIncreaseCounter = 0;
+	public int enemyStrengthIncreasePoint = 2;
 
 	bool fightIsBeginning = false;
 	bool shouldFight = false;
@@ -148,6 +150,10 @@ public class EncounterManager : MonoBehaviour {
 				fightTimer = fightAttackTime;
 				fightIsBeginning = true;
 				currEnemyScript.PlayEnterCombatAnimation();
+
+				currEnemyScript.attack += enemyStrengthIncreaseCounter;
+				currEnemyScript.health += enemyStrengthIncreaseCounter;
+				Debug.Log("aeofawe "+currEnemyScript.attack+"  "+enemyStrengthIncreaseCounter);
 			}
 			chanceOfMerchant += Random.Range(merchantChanceIncrease,merchantChanceIncrease+10);
 		}
@@ -231,6 +237,10 @@ public class EncounterManager : MonoBehaviour {
 		inMerchantEncounter = false;
 		inEncounter = false;
 		CalculateTimeToNextEncounter();
+
+		enemyStrengthIncreaseCounter++;
+
+
 	}
 
 	IEnumerator BattleTextFade(Text text,float time){
