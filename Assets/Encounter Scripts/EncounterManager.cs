@@ -151,8 +151,8 @@ public class EncounterManager : MonoBehaviour {
 				fightIsBeginning = true;
 				currEnemyScript.PlayEnterCombatAnimation();
 
-				currEnemyScript.attack += enemyStrengthIncreaseCounter;
-				currEnemyScript.health += enemyStrengthIncreaseCounter;
+				currEnemyScript.attack += (enemyStrengthIncreaseCounter/2);
+				currEnemyScript.health += (enemyStrengthIncreaseCounter/2);
 				Debug.Log("aeofawe "+currEnemyScript.attack+"  "+enemyStrengthIncreaseCounter);
 			}
 			chanceOfMerchant += Random.Range(merchantChanceIncrease,merchantChanceIncrease+10);
